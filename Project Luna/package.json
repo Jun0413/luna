@@ -1,0 +1,10 @@
+{
+  "name": "project_luna",
+  "version": "0.0.1",
+  "description": "Online Movie Ticket Booking",
+  "scripts": {
+    "css": "node-sass --watch ./styles -o ./dist/assets/css",
+    "html": "pug -w ./pages -o ./dist/ -P",
+    "dev": "npm run css & npm run html"
+  }
+}

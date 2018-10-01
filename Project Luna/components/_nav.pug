@@ -1,0 +1,8 @@
+nav
+    h1 LUNA
+    ul
+        - let pages = ['Home', 'Cinema', 'Movie', 'Contact']
+        each page in pages
+            li(class={active: navName == page})
+                a(href=`${page.toLowerCase()}.html`)= page
+        li: a Login
