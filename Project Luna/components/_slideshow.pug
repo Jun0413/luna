@@ -1,0 +1,11 @@
+.slideshow
+    - const slides = [1,2,3,4,5,6]
+    .slide-container
+        each slide, i in slides
+            a(href="_self").slide
+                img(src=`https://placeimg.com/640/320/any?id=${i}` alt="")
+
+        .indicator
+            each slide, i in slides
+                span.dot(data-index=i)
+
