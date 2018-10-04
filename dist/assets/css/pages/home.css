@@ -1,0 +1,105 @@
+#quickBuy {
+  width: 300px;
+  background: #333;
+  padding: 2rem 0; }
+  /* #quickBuy .select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 15em;
+    height: 2rem;
+    line-height: 2rem;
+    background: #FFF;
+    margin: 1rem auto 0;
+    overflow: hidden;
+    border-radius: .25em;
+    cursor: pointer; } */
+    /* #quickBuy .select::after {
+      content: '\25BC';
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      bottom: 0;
+      pointer-events: none; } */
+    /* #quickBuy .select select,
+    #quickBuy .select input {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background: transparent;
+      background-image: none;
+      cursor: pointer; } */
+  /* #quickBuy select, #quickBuy input {
+    padding: 0 0 0 2.5rem;
+  } */
+    /*
+  #quickBuy .select {
+    background-color: #DDD; } */
+    #quickBuy .select::before {
+      content: '';
+      width: 1.3rem;
+      height: 1.3rem;
+      position: absolute;
+      top: 0.35rem;
+      left: .5rem;
+      color: #000;}
+    /* #quickBuy .select:hover, #quickBuy .select:active {
+      background-color: #FFF; } */
+    #quickBuy .select input[type=date] {
+      padding-left: 30px;
+      border: none;
+      height: 34px;
+      width: 100%; }
+      #quickBuy .select input[type=date]::-webkit-clear-button, #quickBuy .select input[type=date]::-webkit-inner-spin-button {
+        display: none; }
+      #quickBuy .select input[type=date]::-webkit-calendar-picker-indicator {
+        opacity: 1;
+        content: "";
+        top: 15px;
+        height: 7px;
+        margin-right: 6px;
+        width: 12px;
+        color: #000;}
+        #quickBuy .select input[type=date]::-webkit-calendar-picker-indicator:hover {
+          background-color: #fff;
+          cursor: pointer; }
+    #quickBuy .select {
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 10px;}
+
+.slideshow {
+  width: 100%;
+  height: 50vw;
+  overflow: hidden;
+  display: flex;
+  position: relative; }
+  .slideshow .slide-container {
+    flex-wrap: nowrap;
+    display: flex; }
+  .slideshow .slide {
+    flex: 0 0 100%; }
+    .slideshow .slide img {
+      width: 100%;
+      height: 100%; }
+  .slideshow .indicator {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    text-align: center; }
+    .slideshow .indicator .dot {
+      display: inline-block;
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      background: #AAA; }
+      .slideshow .indicator .dot:not(:last-of-type) {
+        margin-right: 5px; }
