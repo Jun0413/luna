@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $my_cinema = $cinema->getByName($cinema_name);
     $my_movie = $movie->getByName($movie_name);
     if($showtime_id) {
-        header("Location: booking?showtime=" . $showtime_id);
+        header("Location: booking.php?showtime=" . $showtime_id);
     }
     $cinema_id = $my_cinema ? $my_cinema['id'] : 0;
     $movie_id = $my_movie ? $my_movie['id'] : 0;
-    header('Location: showtime?cinema=' . $cinema_id . '&movie=' . $movie_id);
+    header('Location: showtime.php?cinema=' . $cinema_id . '&movie=' . $movie_id);
 }
 
 $config = array(
