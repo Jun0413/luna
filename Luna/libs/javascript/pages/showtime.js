@@ -23,8 +23,11 @@ async function fetchShowtimes() {
 
     getCinemas();
 
-    if (cinemaId === '0') {
-        cinemaId = cinemas[0]['cid'];
+    // if (cinemaId === '0') {
+    //     cinemaId = cinemas[0]['cid'];
+    // }
+    if (cinemaId === '0') { // movieId must be valid this time!
+        randCinemaId();
     }
 
     getMovies();
@@ -78,6 +81,20 @@ function getMovies() {
         }
     }
     // console.log(movies);
+}
+
+function randCinemaId() {
+    if (movieId === '0') {
+        console.error("Illegal url");
+        cinemaId = cinemas[0]['cid'];
+        return;
+    }
+    for (let st of showtimes) {
+        if (st['mid'] === movieId) {
+            cinemaId = st['cid'];
+            return;
+        }
+    }
 }
 
 function displayTable() {
