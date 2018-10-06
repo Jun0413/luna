@@ -19,7 +19,7 @@
         <?php
         $links = ['home', 'cinemas', 'movies', 'contact'];
         foreach ($links as $link) {
-            echo "<li><a href='$link'" . ($config['navLink'] == $link ? " class='active'" : "") . ">$link</a></li>";
+            echo "<li><a href='$link.php'" . ($config['navLink'] == $link ? " class='active'" : "") . ">$link</a></li>";
         }
         ?>
     </ul>

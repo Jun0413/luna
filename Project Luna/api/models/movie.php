@@ -1,7 +1,7 @@
 <?php
 require_once 'base.php';
 class Movie extends Base{
-    protected $table_name = 'hall';
+    protected $table_name = 'movie';
 
     public $name;
     public $genre;

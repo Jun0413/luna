@@ -3,8 +3,8 @@
     const req = await fetch('api/rest/quickBuy.php');
     const showtimes = await req.json();
 
-    const cinema_el = document.querySelector("[for='cinema'");
-    const movie_el = document.querySelector("[for='movie'");
+    const cinema_el = document.querySelector("[for='cinema']");
+    const movie_el = document.querySelector("[for='movie']");
     const time_el = document.querySelector("[for='time']");
     const elements = [cinema_el, movie_el, time_el];
     elements.forEach(el => {
@@ -36,7 +36,7 @@
         const cinema = cinema_el.nextElementSibling.value;
         const movie = movie_el.nextElementSibling.value;
         const time = time_el.nextElementSibling.value;
-        const times = toSet(showtimes.filter(v => (!movie || v.movie === movie) && (!cinema || v.cinema === cinema)).map(v => v.time))
+        const times = toSet(showtimes.filter(v => (!movie || v.movie === movie) && (!cinema || v.cinema === cinema)).map(v => v.time)).sort();
         generate_list(time_el, times);
         if (!times.includes(time)) {
             time_el.nextElementSibling.value = null;
@@ -48,7 +48,8 @@
         const cinema = cinema_el.nextElementSibling.value;
         const movie = movie_el.nextElementSibling.value;
         const time = time_el.nextElementSibling.value;
-        window.showtime.value = showtimes.filter(v => v.cinema === cinema && v.movie === movie && v.time === time).map(v => v.id)[0];
+        const result = showtimes.filter(v => v.cinema === cinema && v.movie === movie && v.time === time);
+        window.showtime.value = result.length ? result[0]['id'] : null;
     }
 
     function generate_list(select_el, options) {
@@ -81,6 +82,7 @@
     update_cinemas();
     update_movies();
     update_time();
+
     document.addEventListener('click', e => {
         if (e.target.tagName !== 'INPUT') {
             elements.forEach(el => el.classList.remove('active'));
@@ -88,6 +90,7 @@
     });
 
     document.querySelector("[type='reset']").addEventListener('click', () => {
+        window.showtime.value = null;
         elements.forEach(el => {
             el.nextElementSibling.value = null;
             const name = el.getAttribute('for');

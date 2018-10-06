@@ -1,4 +1,4 @@
-$icons: location movie time;
+$icons: location movie date time;
 $active_icons: none;
 @each $icon in $icons {
     [data-icon=#{$icon}] {

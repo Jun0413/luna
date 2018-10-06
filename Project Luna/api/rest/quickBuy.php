@@ -27,7 +27,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         "id" => $id,
         "cinema" => $cinema,
         "movie" => $movie,
-        "time" => date('M d H:i', mktime($time[0], $time[1], 0, date('m'), (7 + $day - date('d')) % 7, date('Y')))
+        "time" => date('M d H:i', mktime($time[0], $time[1], 0, date('m'), date('d')+(7 + $day - date('w')) % 7, date('Y')))
     );
     array_push($result, $item);
 }

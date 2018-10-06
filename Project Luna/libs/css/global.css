@@ -100,6 +100,13 @@ html {
 [data-icon-before=movie]::before {
   background: url(../../images/icons/movie.svg) center/cover no-repeat; }
 
+[data-icon=date] {
+  content: url(../../images/icons/date.svg); }
+
+[data-icon-after=date]::after,
+[data-icon-before=date]::before {
+  background: url(../../images/icons/date.svg) center/cover no-repeat; }
+
 [data-icon=time] {
   content: url(../../images/icons/time.svg); }
 

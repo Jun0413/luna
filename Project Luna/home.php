@@ -14,12 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cinema_name = $_POST['cinema'];
     $my_cinema = $cinema->getByName($cinema_name);
     $my_movie = $movie->getByName($movie_name);
-    if($showtime_id) {
-        header("Location: booking?showtime=" . $showtime_id);
+    if ($showtime_id) {
+        header("Location: booking.php?showtime=" . $showtime_id);
+        die();
     }
     $cinema_id = $my_cinema ? $my_cinema['id'] : 0;
     $movie_id = $my_movie ? $my_movie['id'] : 0;
-    header('Location: showtime?cinema=' . $cinema_id . '&movie=' . $movie_id);
+    header('Location: showtime.php?cinema=' . $cinema_id . '&movie=' . $movie_id);
 }
 
 $config = array(
@@ -35,18 +36,18 @@ require_once './components/layout_header.php';
 <main>
     <section class="top">
         <?php
-            require_once './components/slideshow.php';
-            $show_config = array(
-                    'delay' => 3000,
-                    'speed'=> 500,
-                    'items' => array(
-                            array('_name' => 'Crazy Rich Asian', '_src' => 'slideshow/crazy_rich_asian.jpg', '_target' => ''),
-                            array('_name' => 'Europe Raiders', '_src' => 'slideshow/europe_raiders.jpg', '_target' => ''),
-                            array('_name' => 'Fantastic Beast', '_src' => 'slideshow/fantastic_beasts.jpg', '_target' => ''),
-                            array('_name' => 'Sui Dhaaga', '_src' => 'slideshow/sui_dhaaga.jpg', '_target' => ''),
-                    )
-            );
-            slide_show($show_config);
+        require_once './components/slideshow.php';
+        $show_config = array(
+            'delay' => 3000,
+            'speed' => 500,
+            'items' => array(
+                array('_name' => 'Crazy Rich Asian', '_src' => 'slideshow/crazy_rich_asian.jpg', '_target' => ''),
+                array('_name' => 'Europe Raiders', '_src' => 'slideshow/europe_raiders.jpg', '_target' => ''),
+                array('_name' => 'Fantastic Beast', '_src' => 'slideshow/fantastic_beasts.jpg', '_target' => ''),
+                array('_name' => 'Sui Dhaaga', '_src' => 'slideshow/sui_dhaaga.jpg', '_target' => ''),
+            )
+        );
+        slide_show($show_config);
         ?>
         <form id="quickBuy" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="cinema" class="select" data-icon-before="location"><span>Choose Cinema</span></label>
