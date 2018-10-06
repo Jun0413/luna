@@ -1,0 +1,47 @@
+@import '../mixins';
+@import '../variable';
+@import '../function';
+
+#quickBuy {
+  background: rgba(60, 60, 60, .7);
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  @include select();
+  $pl: 2.5rem;
+  .select {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: $pl;
+    cursor: pointer;
+    background: #DDD;
+    .select-menu li {
+      padding-left: $pl;
+    }
+    &.active, &:hover {
+      background: #FFF;
+      &::before {
+        transform: scale(1.2);
+      }
+    }
+    &::before {
+      $size: 1.3rem;
+      content: '';
+      display: block;
+      position: absolute;
+      left: .5rem;
+      top: calc(1.1rem - #{$size/2});
+      width: $size;
+      height: $size;
+      pointer-events: none;
+      transition: all .2s ease;
+    }
+  }
+  .buttons {
+    padding: 0 10%;
+    text-align: center;
+    @include raised-button();
+  }
+}

@@ -1,0 +1,19 @@
+$icons: location movie time;
+$active_icons: none;
+@each $icon in $icons {
+    [data-icon=#{$icon}] {
+        content: url(../../images/icons/#{$icon}.svg);
+    }
+    [data-icon-after=#{$icon}]::after,
+    [data-icon-before=#{$icon}]::before {
+        background: url(../../images/icons/#{$icon}.svg) center / cover no-repeat;
+    }
+}
+
+@each $icon in $active_icons {
+    [data-icon-after=#{$icon}]:hover::after,
+    [data-icon-before=#{$icon}]:hover::before {
+        transition: background;
+        background: url(../../images/icons/#{$icon}_active.svg) center / cover no-repeat;
+    }
+}
