@@ -18,7 +18,7 @@ require_once './components/layout_header.php';
         </div>
         <div class="ver_container">
             <div class="hor_tab">
-            </div>    
+            </div> 
             <div id="showtime_table">
             </div>
         </div> -->

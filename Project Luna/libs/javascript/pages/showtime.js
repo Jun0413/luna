@@ -33,6 +33,8 @@ async function fetchShowtimes() {
         movieId = movies[0]['mid'];
     }
 
+    displayTable();
+
     displayTabs();
 
     displayShowtimes();
@@ -45,7 +47,7 @@ function getIdFromURL() {
 }
 
 function getCinemas() {
-    _cinemaIds = new Set();
+    let _cinemaIds = new Set();
     cinemas = [];
     for (let st of showtimes) {
         if (_cinemaIds.has(st['cid'])) {
@@ -61,7 +63,7 @@ function getCinemas() {
 }
 
 function getMovies() {
-    _movieIds = new Set();
+    let _movieIds = new Set();
     movies = [];
     for (let st of showtimes) {
         if (st['cid'] === cinemaId) {
@@ -78,9 +80,8 @@ function getMovies() {
     // console.log(movies);
 }
 
-function displayTabs() {
-
-    horContainer =
+function displayTable() {
+    let horContainer =
     `<div class="ver_tab">
     </div>
     <div class="ver_container">
@@ -91,30 +92,63 @@ function displayTabs() {
     </div>`;
 
     document.getElementsByClassName('hor_container')[0].innerHTML = horContainer;
+}
 
+function displayCinemaTabs() {
     let horTab = "";
 
     for (let c of cinemas) {
         if (c['cid'] === cinemaId) {
-            horTab += `<button class='active'>${c['cinema']}</button>`;
+            horTab += `<button class='active' onclick='clickCinemaTab("${c['cid']}")'>${c['cinema']}</button>`;
         } else {
-            horTab += `<button>${c['cinema']}</button>`;
+            horTab += `<button onclick='clickCinemaTab("${c['cid']}")'>${c['cinema']}</button>`;
         }
     }
 
     document.getElementsByClassName('hor_tab')[0].innerHTML = horTab;
+}
 
+function displayMovieTabs() {
     let verTab = `<button id="dead_top_left">&nbsp;</button>`;
 
     for (let m of movies) {
         if (m['mid'] === movieId) {
-            verTab += `<button class='active'>${m['movie']}</button>`;
+            verTab += `<button class='active' onclick='clickMovieTab("${m['mid']}")'>${m['movie']}</button>`;
         } else {
-            verTab += `<button>${m['movie']}</button>`;
+            verTab += `<button onclick='clickMovieTab("${m['mid']}")'>${m['movie']}</button>`;
         }
     }
 
     document.getElementsByClassName('ver_tab')[0].innerHTML = verTab;
+}
+
+function displayTabs() {
+
+    // let horTab = "";
+
+    // for (let c of cinemas) {
+    //     if (c['cid'] === cinemaId) {
+    //         horTab += `<button class='active' onclick='clickCinemaTab("${c['cid']}")'>${c['cinema']}</button>`;
+    //     } else {
+    //         horTab += `<button onclick='clickCinemaTab("${c['cid']}")'>${c['cinema']}</button>`;
+    //     }
+    // }
+    displayCinemaTabs();
+
+    // document.getElementsByClassName('hor_tab')[0].innerHTML = horTab;
+
+    // let verTab = `<button id="dead_top_left">&nbsp;</button>`;
+
+    // for (let m of movies) {
+    //     if (m['mid'] === movieId) {
+    //         verTab += `<button class='active' onclick='clickMovieTab("${m['mid']}")'>${m['movie']}</button>`;
+    //     } else {
+    //         verTab += `<button onclick='clickMovieTab("${m['mid']}")'>${m['movie']}</button>`;
+    //     }
+    // }
+
+    // document.getElementsByClassName('ver_tab')[0].innerHTML = verTab;
+    displayMovieTabs();
 }
 
 function displayShowtimes() {
@@ -127,8 +161,13 @@ function displayShowtimes() {
             if (!_showtimes[st['day']]) {
                 _showtimes[st['day']] = [];
             }
-            _showtimes[st['day']].push(st['time']);
-            _showtimes[st['day']].sort();
+            _showtimes[st['day']].push({
+                sid: st['id'],
+                slot: st['time']
+            });
+            _showtimes[st['day']].sort((_stA, _stB) => {
+                return _stA.slot - _stB.slot;
+            });
         }
     }
 
@@ -143,7 +182,7 @@ function displayShowtimes() {
         if (index === 0) {
             index = 7;
         }
-        console.log(_showtimes[index.toString()]);
+        // console.log(_showtimes[index.toString()]);
         if (!_showtimes[index.toString()]) {
             showTimeTable += `<div class="day_showtime no_showtime">`
         } else {
@@ -153,8 +192,8 @@ function displayShowtimes() {
         
         showTimeTable += `<div>`;
         if (_showtimes[index.toString()]) {
-            for (let slot of _showtimes[index.toString()]) {
-                showTimeTable += `<button>${slot}</button>`;
+            for (let _st of _showtimes[index.toString()]) {
+                showTimeTable += `<button onclick='selectSlot("${_st['sid']}")'>${_st['slot']}</button>`;
             }
         }
         showTimeTable += `</div></div>`;
@@ -169,6 +208,27 @@ function addDays(date, days) {
     return result;
 }
 
+function clickCinemaTab(newId) {
+    console.log(newId);
+    cinemaId = newId;
+    getMovies();
+    // console.log(movies);
+    movieId = movies[0]['mid'];
+    displayTabs();
+    displayShowtimes();
+}
+
+function clickMovieTab(newId) {
+    movieId = newId;
+    displayMovieTabs();
+    displayShowtimes();
+}
+
+function selectSlot(showtimeId) {
+    location.href = `booking.php?showtime=${showtimeId}`;
+}
+
+/* main entry */
 fetchShowtimes();
 
 /*
