@@ -1,6 +1,0 @@
-nav
-    h1(alt='Luna') LUNA
-    ul
-        - let pages = ['Home', 'Cinema', 'Movie', 'Contact']
-        each page in pages
-            li: a(href=`${page.toLowerCase()}.html` class={active: navName == page})= page.toUpperCase()

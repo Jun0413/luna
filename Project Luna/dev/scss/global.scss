@@ -1,0 +1,92 @@
+@import "normalize";
+@import "function";
+@import "icons";
+
+$navHeight: 4rem;
+nav {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: color(primary);
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  height: $navHeight;
+  h1 {
+    margin: 0;
+    text-indent: -10000px;
+    background: url(../../images/logo.svg) center / 60% no-repeat;
+    width: $navHeight;
+    height: 100%;
+  }
+  ul {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    li {
+      display: inline-block;
+      height: 100%;
+      min-width: 5rem;
+      cursor: pointer;
+      a {
+        text-transform: uppercase;
+        position: relative;
+        color: color(primary);
+        line-height: $navHeight;
+        width: 100%;
+        display: block;
+        text-align: center;
+        opacity: .6;
+        transition: opacity .3s ease;
+        &.active, &:hover {
+          opacity: 1;
+        }
+        &.active {
+          font-weight: 600;
+        }
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          visibility: hidden;
+          width: 0;
+          border-bottom: 2px solid color(primary);
+          bottom: 20%;
+          left: 50%;
+          transition: all .3s ease-in;
+        }
+        &:hover {
+          &::after {
+            content: '';
+            display: block;
+            width: 50%;
+            left: 25%;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000;
+  padding-top: $navHeight;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  padding: 0 5%;
+  height: 3rem;
+  background: color(bg);
+  line-height: 3rem;
+  color: #aaa;
+  p {
+    margin: 0;
+  }
+}
