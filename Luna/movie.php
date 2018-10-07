@@ -29,12 +29,6 @@ require_once './components/layout_header.php';
         slide_show($show_config);
     ?>
     <div id='text_container'>
-        <p id='movie_name'>Thomas & Friends: Big World! Big Adventures!</p>
-        <hr>
-        <p id='tab_name'>
-            Overview
-        </p>
-        <div id='description'>
         <?php
             require_once './api/config/database.php';
             require_once './api/models/movie.php';
@@ -44,6 +38,11 @@ require_once './components/layout_header.php';
 
             $movie = new Movie($db);
             $movie_details = $movie->getId($_GET['movie']);
+
+            echo "<p id='movie_name'>".$movie_details['name']."</p>";
+            echo "<hr>";
+            echo "<p id='tab_name'>Overview</p>";
+            echo "<div id='description'>";
 
             /* render overview */
             echo "<p>".$movie_details['overview']."</p>";
@@ -84,8 +83,8 @@ require_once './components/layout_header.php';
         ?>
         <!-- </div> -->
     </div>
-    <button id='overview_btn' onclick='return clickOverview()'>overview</button>
-    <button id='details_btn' onclick='return clickDetails()'>details</button>
+    <!-- <button id='overview_btn' onclick='return clickOverview()'>overview</button> -->
+    <!-- <button id='details_btn' onclick='return clickDetails()'>details</button> -->
     </section>
 </main>
 

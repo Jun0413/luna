@@ -3,6 +3,28 @@ window.addEventListener('load', () => {
     const container = slideshow.firstElementChild;
     const {delay, speed} = slideshow.dataset;
     const totalSlides = container.childElementCount;
+
+    // const overviewBtn = document.createElement('BUTTON');
+    // overviewBtn.id = 'overview_btn';
+    // overviewBtn.innerHTML = 'overview';
+    // overviewBtn.addEventListener('click', e => {
+    //     clickOverview();
+    // });
+    // const detailsBtn = document.createElement('BUTTON');
+    // detailsBtn.id = 'details_btn';
+    // detailsBtn.innerHTML = 'details';
+    // detailsBtn.addEventListener('click', e => {
+    //     clickDetails();
+    // });
+    // slideshow.appendChild(overviewBtn);
+    // slideshow.appendChild(detailsBtn);
+
+    const slideBtns = document.createElement('DIV');
+    slideBtns.id = 'slide_buttons';
+    // slideBtns.innerHTML = 'slide buttons';
+    slideBtns.innerHTML = `<button id='overview_btn' onclick='return clickOverview()'>overview</button><button id='details_btn' onclick='return clickDetails()'>details</button>`;
+    slideshow.appendChild(slideBtns);
+
     container.appendChild(container.firstElementChild.cloneNode(true));
     [...container.children].forEach(el => {
         el.src = el.dataset.src;
