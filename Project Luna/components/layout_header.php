@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav>
-    <h1>LUNA</h1>
+    <a href="home.php"><h1>LUNA</h1></a>
     <ul>
         <?php
         $links = ['home', 'cinemas', 'movies', 'contact'];

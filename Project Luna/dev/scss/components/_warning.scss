@@ -1,0 +1,27 @@
+.warning {
+  display: none;
+  background: darken(color(primary), 10%);
+  padding: 1rem;
+  color: #FFF;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all ease .3s;
+  &.closing {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+  i {
+    margin-left: 1rem;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 1.5rem;
+    line-height: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      color: black;
+    }
+  }
+}

@@ -3,7 +3,7 @@
 @import '../function';
 
 #quickBuy {
-  background: rgba(60, 60, 60, .7);
+  background: transparentize(color(secondary), .4);
   padding: 2.5rem 0;
   display: flex;
   flex-direction: column;

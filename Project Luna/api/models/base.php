@@ -20,6 +20,12 @@ class Base {
         return $stmt;
     }
 
+    public function get($query) {
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->rowCount() ? $stmt->fetch(PDO::FETCH_ASSOC) : null;
+    }
+
     public function getId($id) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);

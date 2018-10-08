@@ -1,0 +1,120 @@
+@import '../variable';
+@import '../function';
+@import '../mixins';
+@import "../components/warning";
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10%;
+}
+
+.left {
+  width: 35%;
+  color: #FFF;
+  display: inline-block;
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  table {
+    width: 70%;
+    thead td, tfoot td {
+      background: #333;
+    }
+    td {
+      background: #666;
+      padding: 1rem;
+      &:first-child {
+        width: 70%;
+      }
+      &:last-child {
+        width: 30%;
+      }
+    }
+    .sub + .sub {
+      border-top: 2px dotted #888;
+    }
+    tbody tr {
+      &:not(.sub):not(:first-child) {
+        border-top: 2px solid #444;
+      }
+      &.sub {
+        td {
+          text-indent: 2rem;
+          font-size: .9rem;
+          background: #999;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+.right {
+  @include raised-button();
+  width: 45%;
+  display: inline-flex;
+  position: relative;
+  color: #FFF;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .warning {
+    width: 80%;
+  }
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 80%;
+    width: 2px;
+    background: linear-gradient(to bottom, #333 0%, #CCC 50%, #333 100%);
+  }
+  form + p {
+    font-size: 1.2rem;
+    margin-top: 3rem;
+  }
+  .raised-button {
+    width: 8rem;
+  }
+  input {
+    width: 80%;
+    margin: 0 10% 1rem;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+  }
+  .payments {
+    width: 90%;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 9rem;
+    margin: 2rem auto;
+  }
+  input:checked + .payment, .payment:hover {
+    background-color: rgba(255, 255, 255, .1);
+    border-color: #333;
+  }
+  .payment {
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all .3s ease;
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &:not(:last-child) {
+      margin-right: 2%;
+    }
+    i {
+      width: 40%;
+      height: 4rem;
+    }
+  }
+}

@@ -114,6 +114,48 @@ html {
 [data-icon-before=time]::before {
   background: url(../../images/icons/time.svg) center/cover no-repeat; }
 
+[data-icon=imax] {
+  content: url(../../images/icons/imax.svg); }
+
+[data-icon-after=imax]::after,
+[data-icon-before=imax]::before {
+  background: url(../../images/icons/imax.svg) center/cover no-repeat; }
+
+[data-icon=dolby] {
+  content: url(../../images/icons/dolby.svg); }
+
+[data-icon-after=dolby]::after,
+[data-icon-before=dolby]::before {
+  background: url(../../images/icons/dolby.svg) center/cover no-repeat; }
+
+[data-icon=credit] {
+  content: url(../../images/icons/credit.svg); }
+
+[data-icon-after=credit]::after,
+[data-icon-before=credit]::before {
+  background: url(../../images/icons/credit.svg) center/cover no-repeat; }
+
+[data-icon=visa] {
+  content: url(../../images/icons/visa.svg); }
+
+[data-icon-after=visa]::after,
+[data-icon-before=visa]::before {
+  background: url(../../images/icons/visa.svg) center/cover no-repeat; }
+
+[data-icon=paypal] {
+  content: url(../../images/icons/paypal.svg); }
+
+[data-icon-after=paypal]::after,
+[data-icon-before=paypal]::before {
+  background: url(../../images/icons/paypal.svg) center/cover no-repeat; }
+
+[data-icon=mastercard] {
+  content: url(../../images/icons/mastercard.svg); }
+
+[data-icon-after=mastercard]::after,
+[data-icon-before=mastercard]::before {
+  background: url(../../images/icons/mastercard.svg) center/cover no-repeat; }
+
 [data-icon-after=none]:hover::after,
 [data-icon-before=none]:hover::before {
   transition: background;
@@ -130,6 +172,8 @@ nav {
   align-items: center;
   padding: 0 5%;
   height: 4rem; }
+  nav a {
+    height: 100%; }
   nav h1 {
     margin: 0;
     text-indent: -10000px;
@@ -142,6 +186,7 @@ nav {
     margin: 0; }
     nav ul li {
       display: inline-block;
+      position: relative;
       height: 100%;
       min-width: 5rem;
       cursor: pointer; }
@@ -180,14 +225,16 @@ main {
   min-height: 100vh;
   width: 100%;
   background-color: #000;
-  padding-top: 4rem; }
+  padding-top: 4rem;
+  overflow: visible;
+  padding-bottom: 1rem; }
 
 footer {
   bottom: 0;
   width: 100%;
   padding: 0 5%;
   height: 3rem;
-  background: #030119;
+  background: #111;
   line-height: 3rem;
   color: #aaa; }
   footer p {

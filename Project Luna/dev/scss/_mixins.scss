@@ -14,6 +14,7 @@
     padding: 0 1rem;
     -webkit-user-select: none;
     user-select: none;
+    transition: transform .2s ease;
     span {
       display: block;
       width: 100%;
@@ -89,6 +90,9 @@
     background: #999;
     overflow: hidden;
     position: relative;
+    &:active {
+      transform: translateY(2px);
+    }
     span {
       z-index: 10;
       position: relative;
@@ -116,6 +120,14 @@
     }
     &.primary {
       background: color(primary);
+      transition: background-color .3s ease, color .3s ease;
+      &:disabled {
+        background: #666;
+        color: #000;
+        &::after {
+          bottom: -90%;
+        }
+      }
     }
   }
 }
