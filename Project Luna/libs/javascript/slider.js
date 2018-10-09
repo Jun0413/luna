@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
     const total = container.children.length;
     const left_control = document.querySelector('.control_left');
     const right_control = document.querySelector('.control_right');
+    const speed = 300;
     let current = 0;
 
     // clone nodes
@@ -15,7 +16,6 @@ window.addEventListener('load', () => {
     // lazy-load images
     [...container.querySelectorAll('img')].forEach(el => {
         el.src = el.src.replace('0', el.parentElement.dataset.id);
-        el.onload = () => el.classList.remove('opaque');
     });
 
     [...container.children].forEach(el => el.addEventListener('click',
@@ -27,21 +27,25 @@ window.addEventListener('load', () => {
             {transform: `translateX(-${start}%)`},
             {transform: `translateX(-${end}%`}
         ], {
-            duration: 300,
+            duration: speed,
             easing: 'ease-out',
             fill: 'forwards'
         });
     }
 
-    function goNext() {
-        console.log(current);
+    function goNext(e) {
+        if (e.target.disabled) return;
         current %= total;
+        e.target.disabled = true;
+        setTimeout(() => e.target.disabled = false, speed);
         keyframe(current * 20, ++current * 20);
     }
 
-    function goBack() {
-        console.log(current);
+    function goBack(e) {
+        if (e.target.disabled) return;
         current = current % total || total;
+        e.target.disabled = true;
+        setTimeout(() => e.target.disabled = false, speed);
         keyframe(current * 20, --current * 20);
     }
 

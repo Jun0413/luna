@@ -22,6 +22,43 @@
     .warning i:hover {
       color: black; }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1); }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9); }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03); }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97); }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1); } }
+
 main {
   display: flex;
   align-items: center;
@@ -76,7 +113,9 @@ main {
     text-transform: uppercase;
     background: #999;
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none; }
     .right .raised-button:active {
       transform: translateY(2px); }
     .right .raised-button span {
@@ -152,3 +191,89 @@ main {
     .right .payment i {
       width: 40%;
       height: 4rem; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(150, 150, 150, 0.6);
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn .3s ease; }
+  .modal .modal_content {
+    width: 30%;
+    min-width: 25rem;
+    padding: 2rem;
+    background: #242C38;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+    animation: zoomIn .3s ease; }
+  .modal .icon {
+    width: 5rem;
+    height: 5rem; }
+    .modal .icon.success {
+      background: url(../../../images/icons/success.svg) center/cover no-repeat; }
+    .modal .icon.failure {
+      background: url(../../../images/icons/failure.svg) center/cover no-repeat; }
+  .modal h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 2; }
+  .modal p {
+    text-align: center;
+    margin-bottom: 2rem; }
+  .modal .raised-button {
+    padding: .5rem 1rem;
+    color: #333;
+    width: 6rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    background: #999;
+    overflow: hidden;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none; }
+    .modal .raised-button:active {
+      transform: translateY(2px); }
+    .modal .raised-button span {
+      z-index: 10;
+      position: relative; }
+    .modal .raised-button::after {
+      content: '';
+      display: block;
+      background: #FFF;
+      opacity: .2;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      bottom: -90%;
+      transition: bottom .2s ease-in; }
+    .modal .raised-button:hover {
+      background: #666; }
+      .modal .raised-button:hover::after {
+        bottom: 0; }
+    .modal .raised-button:last-child {
+      margin-left: 1rem; }
+    .modal .raised-button.primary {
+      background: #f1b451;
+      transition: background-color .3s ease, color .3s ease; }
+      .modal .raised-button.primary:disabled {
+        background: #666;
+        color: #000; }
+        .modal .raised-button.primary:disabled::after {
+          bottom: -90%; }
+  .modal a {
+    display: inline-block;
+    text-align: center; }

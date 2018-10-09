@@ -14,7 +14,7 @@ class Base {
     }
 
     public function getAll($query) {
-        $query = $query == null ? "SELECT * FROM" . $this->table_name : $query;
+        $query = $query == null ? "SELECT * FROM " . $this->table_name : $query;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

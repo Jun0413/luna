@@ -156,6 +156,34 @@ html {
 [data-icon-before=mastercard]::before {
   background: url(../../images/icons/mastercard.svg) center/cover no-repeat; }
 
+[data-icon=sort] {
+  content: url(../../images/icons/sort.svg); }
+
+[data-icon-after=sort]::after,
+[data-icon-before=sort]::before {
+  background: url(../../images/icons/sort.svg) center/cover no-repeat; }
+
+[data-icon=child] {
+  content: url(../../images/icons/child.svg); }
+
+[data-icon-after=child]::after,
+[data-icon-before=child]::before {
+  background: url(../../images/icons/child.svg) center/cover no-repeat; }
+
+[data-icon=region] {
+  content: url(../../images/icons/region.svg); }
+
+[data-icon-after=region]::after,
+[data-icon-before=region]::before {
+  background: url(../../images/icons/region.svg) center/cover no-repeat; }
+
+[data-icon=genre] {
+  content: url(../../images/icons/genre.svg); }
+
+[data-icon-after=genre]::after,
+[data-icon-before=genre]::before {
+  background: url(../../images/icons/genre.svg) center/cover no-repeat; }
+
 [data-icon-after=none]:hover::after,
 [data-icon-before=none]:hover::before {
   transition: background;

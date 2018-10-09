@@ -37,8 +37,35 @@
         });
         const data = await res.json();
         if (data.success) {
-
+            show_modal();
+        } else {
+            show_modal(data.error);
         }
+    }
+
+    function show_modal(error) {
+        const modal = document.createElement('section');
+        modal.classList.add('modal');
+        const modal_content = document.createElement('div');
+        modal.appendChild(modal_content);
+        modal_content.classList.add('modal_content');
+        modal_content.innerHTML = error ? `
+                   <div class="icon failure"></div>
+                   <h3>Payment Failed</h3>
+                   <p>${error}</p>
+                   <div class="buttons">
+                       <a href="home.php" class="raised-button"><span>home</span></a>
+                       <a href="showtime.php" class="raised-button primary"><span>retry</span></a>
+                   </div>` : `
+                  <div class="icon success"></div>
+                   <h3>Payment Successful</h3>
+                   <p>You will receive a confirmation email for your bookings.</p>
+                   <div class="buttons">
+                       <a href="home.php" class="raised-button"><span>home</span></a>
+                       <a href="user.php" class="raised-button primary"><span>check</span></a>
+                   </div>`;
+        document.querySelector('main').appendChild(modal);
+        document.body.style.overflow = 'hidden';
     }
 
     form.name.addEventListener('blur', () => {

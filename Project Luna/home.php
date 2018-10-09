@@ -77,7 +77,7 @@ require_once './components/layout_header.php';
             <div class="container">
                 <?php foreach ($movies as $m) { ?>
                 <div class="movie" data-id="<?php echo $m['id'] ?>">
-                    <img class="opaque" src="./images/posters/0.jpg" alt="<?php echo $m['name'] ?>">
+                    <img src="./images/posters/0.jpg" alt="<?php echo $m['name'] ?>">
                     <div class="info">
                         <span><?php echo $m['name'] ?></span>
                         <span><?php echo $m['genre'] ?></span>

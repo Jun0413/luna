@@ -125,7 +125,6 @@ require_once './components/layout_header.php';
         </div>
         <button class="raised-button primary" disabled>confirm</button>
     </section>
-
 </main>
 
 

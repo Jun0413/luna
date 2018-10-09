@@ -233,7 +233,9 @@
     text-transform: uppercase;
     background: #999;
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none; }
     .top .raised-button:active {
       transform: translateY(2px); }
     .top .raised-button span {

@@ -1,4 +1,4 @@
-$icons: location movie date time imax dolby credit visa paypal mastercard;
+$icons: location movie date time imax dolby credit visa paypal mastercard sort child region genre;
 $active_icons: none;
 @each $icon in $icons {
     [data-icon=#{$icon}] {

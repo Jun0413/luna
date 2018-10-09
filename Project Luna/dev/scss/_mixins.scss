@@ -90,6 +90,8 @@
     background: #999;
     overflow: hidden;
     position: relative;
+    -webkit-user-select: none;
+    user-select: none;
     &:active {
       transform: translateY(2px);
     }
