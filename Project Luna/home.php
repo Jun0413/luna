@@ -26,8 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $config = array(
     'navLink' => 'home',
     'styles' => array('./libs/css/pages/home.css'),
-    'scripts' => array('./libs/javascript/slideshow.js', './libs/javascript/pages/home.js')
+    'scripts' => array('./libs/javascript/slideshow.js', './libs/javascript/slider.js', './libs/javascript/pages/home.js')
 );
+
+$query = "SELECT id, name, length, genre
+          FROM movie WHERE is_showing = 0";
+$stmt = $movie->getAll($query);
+$movies = array();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    array_push($movies, $row);
+}
 
 
 require_once './components/layout_header.php';
@@ -41,10 +49,10 @@ require_once './components/layout_header.php';
             'delay' => 3000,
             'speed' => 500,
             'items' => array(
-                array('_name' => 'Crazy Rich Asian', '_src' => 'slideshow/crazy_rich_asian.jpg', '_target' => ''),
-                array('_name' => 'Europe Raiders', '_src' => 'slideshow/europe_raiders.jpg', '_target' => ''),
-                array('_name' => 'Fantastic Beast', '_src' => 'slideshow/fantastic_beasts.jpg', '_target' => ''),
-                array('_name' => 'Sui Dhaaga', '_src' => 'slideshow/sui_dhaaga.jpg', '_target' => ''),
+                array('_name' => 'Crazy Rich Asian', '_src' => 'slideshow/crazy_rich_asian.jpg', '_target' => 'movie.php?movie=7'),
+                array('_name' => 'Europe Raiders', '_src' => 'slideshow/europe_raiders.jpg', '_target' => 'movie.php?movie=16'),
+                array('_name' => 'Fantastic Beast', '_src' => 'slideshow/fantastic_beasts.jpg', '_target' => 'movie.php?movie=9'),
+                array('_name' => 'Sui Dhaaga', '_src' => 'slideshow/sui_dhaaga.jpg', '_target' => 'movie.php?movie=20'),
             )
         );
         slide_show($show_config);
@@ -62,6 +70,27 @@ require_once './components/layout_header.php';
                 <button type="submit" class="raised-button primary"><span>go</span></button>
             </div>
         </form>
+    </section>
+    <section class="bottom">
+        <h2>upcoming</h2>
+        <div class="slider">
+            <div class="container">
+                <?php foreach ($movies as $m) { ?>
+                <div class="movie" data-id="<?php echo $m['id'] ?>">
+                    <img class="opaque" src="./images/posters/0.jpg" alt="<?php echo $m['name'] ?>">
+                    <div class="info">
+                        <span><?php echo $m['name'] ?></span>
+                        <span><?php echo $m['genre'] ?></span>
+                        <span><?php echo $m['length'] ?> min</span>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="control_left">&#10094;</button>
+            <button class="control_right">&#10095;</button>
+        </div>
     </section>
 </main>
 

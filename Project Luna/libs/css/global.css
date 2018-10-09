@@ -194,12 +194,12 @@ nav {
         text-transform: uppercase;
         position: relative;
         color: #f1b451;
-        line-height: 4rem;
         width: 100%;
         display: block;
         text-align: center;
         opacity: .6;
-        transition: opacity .3s ease; }
+        transition: opacity .3s ease;
+        line-height: 4rem; }
         nav ul li a.active, nav ul li a:hover {
           opacity: 1; }
         nav ul li a.active {

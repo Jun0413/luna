@@ -1,6 +1,7 @@
 @import "normalize";
 @import "function";
 @import "icons";
+@import "mixins";
 
 $navHeight: 4rem;
 nav {
@@ -35,41 +36,8 @@ nav {
       min-width: 5rem;
       cursor: pointer;
       a {
-        text-transform: uppercase;
-        position: relative;
-        color: color(primary);
+        @include nav_text();
         line-height: $navHeight;
-        width: 100%;
-        display: block;
-        text-align: center;
-        opacity: .6;
-        transition: opacity .3s ease;
-        &.active, &:hover {
-          opacity: 1;
-        }
-        &.active {
-          font-weight: 600;
-        }
-        &::after {
-          content: '';
-          display: block;
-          position: absolute;
-          visibility: hidden;
-          width: 0;
-          border-bottom: 2px solid color(primary);
-          bottom: 20%;
-          left: 50%;
-          transition: all .3s ease-in;
-        }
-        &:hover {
-          &::after {
-            content: '';
-            display: block;
-            width: 50%;
-            left: 25%;
-            visibility: visible;
-          }
-        }
       }
     }
   }

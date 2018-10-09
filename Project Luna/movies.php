@@ -13,6 +13,12 @@ require_once './components/layout_header.php';
 ?>
 
 <main>
+    <section class="top">
+
+    </section>
+    <section class="bottom">
+
+    </section>
 </main>
 
 <?php

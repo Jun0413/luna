@@ -131,3 +131,62 @@
     }
   }
 }
+
+@mixin nav_text() {
+  text-transform: uppercase;
+  position: relative;
+  color: color(primary);
+  width: 100%;
+  display: block;
+  text-align: center;
+  opacity: .6;
+  transition: opacity .3s ease;
+  &.active, &:hover {
+    opacity: 1;
+  }
+  &.active {
+    font-weight: 600;
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    border-bottom: 2px solid color(primary);
+    bottom: 20%;
+    left: 50%;
+    transition: all .3s ease-in;
+  }
+  &:hover {
+    &::after {
+      content: '';
+      display: block;
+      width: 50%;
+      left: 25%;
+      visibility: visible;
+    }
+  }
+}
+
+@mixin header() {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  opacity: 1;
+  color: #FFF;
+  text-align: left;
+  width: 8rem;
+  line-height: 2;
+  position: relative;
+  margin-bottom: 1rem;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    border-bottom: 2px solid color(primary);
+    bottom: 10%;
+    transition: all .3s ease-in;
+  }
+}
