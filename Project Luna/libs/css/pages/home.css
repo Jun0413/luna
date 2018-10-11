@@ -1,0 +1,302 @@
+#quickBuy {
+  background: rgba(36, 44, 56, 0.6);
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+  #quickBuy .select {
+    width: 100%;
+    background: #FFF;
+    display: block;
+    position: relative;
+    line-height: 2rem;
+    height: 2rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: transform .2s ease; }
+    #quickBuy .select span {
+      display: block;
+      width: 100%;
+      padding-right: 2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    #quickBuy .select::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 3px);
+      right: 1rem;
+      border: 6px solid transparent;
+      border-top-color: #000;
+      height: 0;
+      width: 0;
+      pointer-events: none;
+      transition: all .2s ease-in; }
+    #quickBuy .select:hover::after {
+      transform: scaleY(-1);
+      transform-origin: 50% 25%; }
+    #quickBuy .select.active span {
+      font-weight: bold; }
+    #quickBuy .select.active .select-menu {
+      display: block; }
+    #quickBuy .select .select-menu {
+      position: absolute;
+      display: none;
+      left: 0;
+      top: 2rem;
+      width: 100%;
+      z-index: 30;
+      max-height: 16rem;
+      overflow-y: auto; }
+      #quickBuy .select .select-menu li {
+        width: 100%;
+        height: 2rem;
+        background: #EEE;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 1rem; }
+        #quickBuy .select .select-menu li.active {
+          color: #f1b451;
+          font-weight: bold; }
+        #quickBuy .select .select-menu li:hover {
+          background: #DDD; }
+  #quickBuy .select {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 2.5rem;
+    cursor: pointer;
+    background: #DDD; }
+    #quickBuy .select .select-menu li {
+      padding-left: 2.5rem; }
+    #quickBuy .select.active, #quickBuy .select:hover {
+      background: #FFF; }
+      #quickBuy .select.active::before, #quickBuy .select:hover::before {
+        transform: scale(1.2); }
+    #quickBuy .select::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: .5rem;
+      top: calc(1.1rem - 0.65rem);
+      width: 1.3rem;
+      height: 1.3rem;
+      pointer-events: none;
+      transition: all .2s ease; }
+  #quickBuy .buttons {
+    padding: 0 10%;
+    text-align: center; }
+    #quickBuy .buttons .raised-button {
+      padding: .5rem 1rem;
+      color: #333;
+      width: 6rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1em;
+      text-transform: uppercase;
+      background: #999;
+      overflow: hidden;
+      position: relative;
+      -webkit-user-select: none;
+      user-select: none; }
+      #quickBuy .buttons .raised-button:active {
+        transform: translateY(2px); }
+      #quickBuy .buttons .raised-button span {
+        z-index: 10;
+        position: relative; }
+      #quickBuy .buttons .raised-button::after {
+        content: '';
+        display: block;
+        background: #FFF;
+        opacity: .2;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        bottom: -90%;
+        transition: bottom .2s ease-in; }
+      #quickBuy .buttons .raised-button:hover {
+        background: #666; }
+        #quickBuy .buttons .raised-button:hover::after {
+          bottom: 0; }
+      #quickBuy .buttons .raised-button:last-child {
+        margin-left: 1rem; }
+      #quickBuy .buttons .raised-button.primary {
+        background: #f1b451;
+        transition: background-color .3s ease, color .3s ease; }
+        #quickBuy .buttons .raised-button.primary:disabled {
+          background: #666;
+          color: #000; }
+          #quickBuy .buttons .raised-button.primary:disabled::after {
+            bottom: -90%; }
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer; }
+  .slideshow figure {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    background: #999; }
+  .slideshow img {
+    max-width: 100%;
+    object-fit: cover;
+    transition: opacity .3s ease; }
+  .slideshow img[data-src] {
+    opacity: 0; }
+  .slideshow img:not([data-src]) {
+    opacity: 1; }
+  .slideshow ul {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 20; }
+    .slideshow ul li {
+      display: inline-block;
+      border-radius: 50%;
+      width: 0.8rem;
+      height: 0.8rem;
+      background: #FFF;
+      opacity: .5;
+      box-shadow: 1px 1px 3px #666;
+      cursor: pointer;
+      transition: opacity .3s; }
+      .slideshow ul li.active, .slideshow ul li:hover {
+        opacity: 1; }
+      .slideshow ul li:not(:last-of-type) {
+        margin-right: 5px; }
+
+.top {
+  background: #000;
+  position: relative;
+  overflow: hidden; }
+  .top .slideshow {
+    position: relative;
+    min-width: 60rem;
+    margin-right: 5%;
+    float: right;
+    width: 60vw;
+    min-height: 33.6rem;
+    height: 33.6vw; }
+    .top .slideshow::before, .top .slideshow::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0; }
+    .top .slideshow::before {
+      background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.005) 95%, #000 100%), linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 75%, #000 100%);
+      z-index: 10; }
+    .top .slideshow::after {
+      background: radial-gradient(circle, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.3) 90%, #000 100%);
+      width: 120%; }
+  .top #quickBuy {
+    position: absolute;
+    width: 20vw;
+    min-width: 20rem;
+    height: 20rem;
+    left: 10%;
+    top: calc(50% - 10rem);
+    z-index: 10; }
+
+.bottom {
+  width: 80%;
+  position: relative;
+  padding: 0 2rem;
+  margin: 1rem auto; }
+  .bottom h2 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    opacity: 1;
+    color: #FFF;
+    text-align: left;
+    width: 8rem;
+    line-height: 2;
+    position: relative;
+    margin-bottom: 1rem; }
+    .bottom h2::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 60%;
+      left: 20%;
+      border-bottom: 2px solid #f1b451;
+      bottom: 10%;
+      transition: all .3s ease-in; }
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10; }
+  .slider .container {
+    display: flex;
+    flex-wrap: nowrap; }
+  .slider .movie {
+    flex: 0 0 15%;
+    margin: 0 2.5%;
+    position: relative;
+    cursor: pointer; }
+    .slider .movie img {
+      max-width: 100%;
+      transition: all .3s ease; }
+    .slider .movie:hover .info {
+      visibility: visible;
+      opacity: 1; }
+  .slider .info {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; }
+    .slider .info span {
+      opacity: .8;
+      line-height: 1.2; }
+      .slider .info span:first-child {
+        opacity: 1;
+        font-size: 1.2rem;
+        font-weight: bold; }
+
+.controls {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: calc(50% - 1rem + 2rem);
+  left: 0; }
+  .controls button {
+    background: transparent;
+    color: #CCC;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    transition: all .3s ease;
+    cursor: pointer; }
+    .controls button:hover {
+      color: #f1b451; }
+    .controls button:active {
+      transform: scale(1.2); }

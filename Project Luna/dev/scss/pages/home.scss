@@ -1,0 +1,138 @@
+@import '../variable';
+@import '../function';
+@import "../mixins";
+@import '../components/quickBuy';
+@import '../components/slideshow';
+
+.top {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  .slideshow {
+    position: relative;
+    $width: 60vw;
+    $min: 60rem;
+    min-width: $min;
+    margin-right: 5%;
+    float: right;
+    width: $width;
+    min-height: $min * 0.56;
+    height: $width * 0.56;
+    &::before, &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0
+    }
+    &::before {
+      background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.005) 95%, #000 100%),
+      linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 75%, #000 100%);
+      z-index: 10;
+    }
+    &::after {
+      background: radial-gradient(circle, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.3) 90%, #000 100%);
+      width: 120%;
+    }
+  }
+  #quickBuy {
+    $height: 20rem;
+    position: absolute;
+    width: 20vw;
+    min-width: 20rem;
+    height: $height;
+    left: 10%;
+    top: calc(50% - #{$height/2});
+    z-index: 10;
+  }
+}
+
+.bottom {
+  width: 80%;
+  position: relative;
+  padding: 0 2rem;
+  margin: 1rem auto;
+  h2 {
+    @include header();
+  }
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .movie {
+    flex: 0 0 15%;
+    margin: 0 2.5%;
+    position: relative;
+    cursor: pointer;
+    img {
+      max-width: 100%;
+      transition: all .3s ease;
+    }
+    &:hover {
+      .info {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+  .info {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    span {
+      opacity: .8;
+      line-height: 1.2;
+      &:first-child {
+        opacity: 1;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.controls {
+  $size: 2rem;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: calc(50% - #{$size/2} + 2rem);
+  left: 0;
+  button {
+    background: transparent;
+    color: #CCC;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    transition: all .3s ease;
+    cursor: pointer;
+    &:hover {
+      color: color(primary);
+    }
+    &:active {
+      transform: scale(1.2);
+    }
+  }
+}
