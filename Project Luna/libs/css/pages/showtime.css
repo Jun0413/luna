@@ -1,0 +1,137 @@
+/*
+2f2f2f => shen hui
+404040 => qian hui
+262626 => shen hui
+*/
+
+:root {
+    --bg: #242C38;
+    --active: #3F4C5B;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.hor_container {
+    display: flex;
+    min-height: 40rem;
+    color: white;
+}
+
+.ver_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.hor_tab {
+    /* overflow: hidden; */
+    /* border: 1px solid #ccc; */
+    /* background-color: #f1f1f1; */
+    background-color: var(--bg);
+}
+
+.hor_tab button {
+    width: 150px;
+}
+
+.hor_tab button, .ver_tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: white;
+}
+
+.ver_tab button {
+    display: block;
+    width: 100%;
+}
+
+.hor_tab button:hover, .ver_tab button:hover {
+    background-color: #0E1319;
+}
+
+.hor_tab button.active, .ver_tab button.active {
+    /* background-color: #ccc; */
+    background-color: var(--active);
+}
+
+.ver_tab {
+    /* border: 1px solid #ccc; */
+    /* background-color: #f1f1f1; */
+    background-color: var(--bg);
+    width: 200px;
+}
+
+#showtime_table {
+    padding: 2rem 2rem;
+    /* border: 5px solid #f1b451; */
+    border-top: none;
+    border-left: none;
+    background-color: var(--active);
+    height: 100%;
+}
+
+#dead_top_left:hover {
+    /* background-color: #f1f1f1; */
+    background-color: var(--bg);
+}
+#dead_top_left {
+    cursor: auto;
+}
+
+.day_showtime {
+    margin: 20px 0;
+}
+
+.day_showtime button {
+    border: none;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 1.5rem;
+    font-size: 0.7em;
+    padding: 8px;
+    background-color: #f1b451;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+.day_showtime button:active {
+    transform: translateY(2px);
+}
+
+.day_showtime button:hover {
+    cursor: pointer;
+}
+
+.day_showtime button::after {
+    content: '';
+    display: block;
+    background: #FFF;
+    opacity: .5;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: -100%;
+    transition: bottom .2s ease-in;
+  }
+  .day_showtime button:hover::after {
+      bottom: 0;
+    }
+
+.day_showtime p {
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.no_showtime p {
+    color: #ccc;
+    text-decoration: none;
+    opacity: .3;
+}
