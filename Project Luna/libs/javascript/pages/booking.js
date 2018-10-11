@@ -93,11 +93,17 @@
     generate_seats(showtime_el.value);
 
     function checkShowtime() {
+        const original_showtime = showtime_el.value;
         const cinema = cinema_el.nextElementSibling.value;
         const day = day_el.nextElementSibling.value;
         const time = time_el.nextElementSibling.value;
         const result = showtimes.filter(v => v.cinema === cinema && v.day === day && v.time === time);
         showtime_el.value = result.length ? result[0]['id'] : null;
+        console.log(showtime_el.value, original_showtime);
+        if (showtime_el.value !== original_showtime) {
+            seats = [];
+            pay_btn.disabled = true;
+        }
         generate_seats(showtime_el.value);
     }
 
@@ -141,7 +147,7 @@
 
     async function generate_seats(showtime) {
         if (!showtime) return reset_seats();
-        history.pushState(null, document.title, document.URL.replace(/\d+/, showtime));
+        history.pushState(null, document.title, `${location.pathname}?showtime=${showtime}`);
         const res  = await fetch(`api/rest/checkBooking.php?showtime=${showtime}`);
         const hall = await res.json();
 
@@ -160,6 +166,7 @@
         [...layout.querySelectorAll('span:not(.active)')].forEach(el => {
             el.addEventListener('click', selectSeat);
         });
+        selected_seats.forEach(s => document.querySelector(`[data-seat="${s}"]`).classList.add('chosen'));
     }
 
 

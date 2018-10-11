@@ -3,9 +3,9 @@
 class Database
 {
     private $host = 'localhost';
-    private $db_name = 'luna';
-    private $username = 'user';
-    private $password = 'user';
+    private $db_name = 'f37ee';
+    private $username = 'f37ee';
+    private $password = 'f37ee';
     public $conn;
 
     public function getConnection()
