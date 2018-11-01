@@ -16,7 +16,7 @@ $active_icons: none bin;
         transition: background;
         background: url(../../images/icons/#{$icon}_active.svg) center / cover no-repeat;
     }
-    *:hover > [data-icon] {
+    *:hover > [data-icon=#{$icon}] {
         content: url(../../images/icons/#{$icon}_active.svg);
     }
 }

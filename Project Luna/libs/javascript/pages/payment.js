@@ -81,4 +81,25 @@
 
     pay_btn.addEventListener('click', makePayment);
 
+    [...document.querySelectorAll('i[data-id]')].forEach(el => {
+        el.parentElement.addEventListener('click', e => e.stopPropagation());
+        el.addEventListener('click', async (e) => {
+            const data = {type: 'REMOVE_SHOWTIME', showtime: el.dataset.id};
+            const req = await fetch('api/rest/updateBooking.php', {body: JSON.stringify(data), method: 'post'});
+            const result = await req.json();
+            const parent = e.target.parentElement.parentElement;
+            const movie = parent.firstElementChild.textContent.split('x')[0].split('-')[1].trim();
+            if(result.success && confirm(`Do you want to delete bookings for 🎬${movie}?`)) {
+                while(parent.nextElementSibling.classList.contains('sub')) {
+                    parent.parentElement.removeChild(parent.nextElementSibling);
+                }
+                parent.parentElement.removeChild(parent);
+            }
+            if(document.querySelectorAll('.header:not(.combo)').length < 2) {
+                [...document.querySelectorAll('.header')].forEach(h => h.classList.add('expanded'));
+            }
+            e.stopPropagation();
+        });
+    });
+
 })();

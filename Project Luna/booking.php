@@ -6,7 +6,7 @@ $config = array(
 );
 
 if (!isset($_GET['showtime'])) {
-    header('Location: home.php');
+    header('location: home.php');
     die();
 }
 

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !isset($data)) {
 
 
 $result = ["success" => true];
-try {
+// try {
     switch ($data['type']) {
         case 'UPDATE_COMBO':
             $_SESSION['combo_a'] = $data['combo_a'];
@@ -27,9 +27,9 @@ try {
         case 'REMOVE_SHOWTIME':
             unset($_SESSION['showtimes'][$data['showtime']]);
     }
-} catch (Exception $ex) {
-    $result['success'] = false;
-}
+// } catch (Exception $ex) {
+    // $result['success'] = false;
+// }
 
 echo json_encode($result);
 

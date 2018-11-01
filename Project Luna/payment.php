@@ -36,6 +36,7 @@ require_once './components/layout_header.php';
             <?php
                 require_once './api/models/showtime.php';
                 $showtime = new Showtime();
+                $class = count($_SESSION['showtimes']) > 2 ? 'header' : 'header expanded';
                 foreach($_SESSION['showtimes'] as $id => $seats) {
                     $detail = $showtime->getById($id);
                     $time = explode(':', $detail['time']);
@@ -45,10 +46,10 @@ require_once './components/layout_header.php';
                     $movie_price = $detail['count'] * $detail['price'];
                     $total += $movie_price;
                     echo "
-                        <tr class='header' onclick='this.classList.toggle(\"expanded\")'>
+                        <tr class='$class' onclick='this.classList.toggle(\"expanded\")'>
                             <td>Movie - ".$detail['movie']." x".$detail['count']."</td>
                             <td>$" . number_format($movie_price, 2) . "</td>
-                            <td><i data-icon='bin' onclick='removeMovie($id)'></i></td>
+                            <td><i data-icon='bin' data-id='$id'></i></td>
                         </tr>
                         <tr class='sub'>
                             <td colspan='3'>".$detail['cinema']." - ".$detail['hall']."</td>
@@ -63,10 +64,10 @@ require_once './components/layout_header.php';
                 }
                 if ($_SESSION['combo_a']) {
                     echo "
-                        <tr class='header' onclick='this.classList.toggle(\"expanded\")'>
+                        <tr class='header combo expanded' onclick='this.classList.toggle(\"expanded\")'>
                             <td>Snack - Combo A x" . $_SESSION['combo_a'] . "</td>
                             <td>$" . number_format($combo_a_price, 2) . "</td>
-                            <td><i data-icon='bin' onclick='removeCombo(\'a\')'></i></td>
+                            <td><i data-icon='bin' data-combo='a'></i></td>
                         </tr>
                         <tr class='sub'>
                             <td colspan='3'>Each @ $9.00</td>
@@ -75,10 +76,10 @@ require_once './components/layout_header.php';
                 }
                 if ($_SESSION['combo_b']) {
                     echo "
-                        <tr class='header' onclick='this.classList.toggle(\"expanded\")'>
+                        <tr class='header combo expanded' onclick='this.classList.toggle(\"expanded\")'>
                             <td>Snack - Combo A x" . $_SESSION['combo_b'] . "</td>
                             <td>$" . number_format($combo_b_price, 2) . "</td>
-                            <td><i data-icon='bin' onclick='removeCombo(\'b\')'></i></td>
+                            <td><i data-icon='bin' data-combo='b'></i></td>
                         </tr>
                         <tr class='sub'>
                             <td colspan='3'>Each @ $8.50</td>
