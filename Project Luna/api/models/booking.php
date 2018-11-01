@@ -12,9 +12,7 @@ class Booking extends Base{
             (showtime_id, transaction_id, seat) VALUES (?, ? , ?);
         ";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->showtime_id);
-        $stmt->bindParam(2, $this->transaction_id);
-        $stmt->bindParam(3, $this->seat);
+        $stmt->bind_param('iis', $this->showtime_id, $this->transaction_id, $this->seat);
         $stmt->execute();
         return $stmt;
     }

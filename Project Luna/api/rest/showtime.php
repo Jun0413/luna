@@ -3,8 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/database.php';
 include_once '../models/showtime.php';
-$database = new Database();
-$db = $database->getConnection();
+$db = Database::getConnection();
 $showtime = new Showtime($db);
 $query = "SELECT s.id, c.id as cid, c.name as cinema, m.id as mid, m.name as movie, s.day, s.start_time as time 
           FROM showtime s 
@@ -12,9 +11,9 @@ $query = "SELECT s.id, c.id as cid, c.name as cinema, m.id as mid, m.name as mov
           LEFT JOIN cinema c ON h.cinema_id = c.id 
           LEFT JOIN movie m ON s.movie_id = m.id 
           ORDER BY s.id";
-$stmt = $showtime->getAll($query);
-$result = array();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+$result = $showtime->getAll($query);
+$data = array();
+while ($row = $result->fetch_assoc()) {
     extract($row);
     $item = array(
         "id" => $id,
@@ -25,6 +24,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         "day" => $day,
         "time" => substr($time, 0, 5)
     );
-    array_push($result, $item);
+    array_push($data, $item);
 }
-echo json_encode($result);
+echo json_encode($data);

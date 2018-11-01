@@ -70,9 +70,14 @@ main {
     font-size: 2rem;
     margin-bottom: 2rem;
     text-transform: uppercase;
+    a {
+      font-size: 1rem;
+      color: color(primary);
+    }
   }
   table {
     width: 70%;
+    margin-bottom: 1rem;
     thead td, tfoot td {
       background: #333;
     }
@@ -82,7 +87,7 @@ main {
       &:first-child {
         width: 70%;
       }
-      &:last-child {
+      &:nth-child(2) {
         width: 30%;
       }
     }
@@ -103,10 +108,24 @@ main {
       }
     }
   }
+  td:nth-child(3) {
+    width: 1.5rem;
+  }
+  i {
+    width: 1rem;
+    cursor: pointer;
+  }
+  .sub td {
+    height: 0;
+    transition: height .3s ease-in;
+  }
+  .expanded + .sub td, .expanded + .sub + .sub td, .expanded + .sub + .sub + .sub td{
+    height: auto;
+  }
 }
 
+@include raised-button();
 .right {
-  @include raised-button();
   width: 45%;
   display: inline-flex;
   position: relative;

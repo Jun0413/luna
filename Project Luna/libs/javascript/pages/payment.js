@@ -1,6 +1,6 @@
 (function () {
     const form = document.forms[0];
-    const pay_btn = document.querySelector('.raised-button');
+    const pay_btn = document.querySelector('.pay-button');
     const warning = document.querySelector('.warning');
 
     function show_warning(msg) {
