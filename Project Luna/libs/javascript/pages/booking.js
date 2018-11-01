@@ -9,17 +9,15 @@
     panel_control.addEventListener('click', e => {
         e.target.parentElement.classList.toggle('open');
     });
-    [...document.querySelectorAll('.plus')].forEach(el => {
-        el.addEventListener('click', () => {
+    [...document.querySelectorAll('.control-button')].forEach(el => {
+        el.addEventListener('click', async () => {
             const input = el.parentElement.querySelector('input');
-            input.value = Math.min(+input.value + 1, 99);
-            panel_control.setAttribute('data-count', parseInt(combo_a.value) + parseInt(combo_b.value));
-        });
-    });
-    [...document.querySelectorAll('.minus')].forEach(el => {
-        el.addEventListener('click', () => {
-            const input = el.parentElement.querySelector('input');
-            input.value = Math.max(+input.value - 1, 0);
+            const add = el.classList.contains('plus');
+            const value = add ? Math.min(+input.value + 1, 99) : Math.max(+input.value - 1, 0);
+            const data = {type: 'UPDATE_COMBO', 'combo_a': window.combo_a.value, 'combo_b': window.combo_b.value};
+            const req = await fetch('api/rest/updateBooking.php', {body: JSON.stringify(data), method: 'post'});
+            const result = await req.json();
+            if (result.success) input.value = value;
             panel_control.setAttribute('data-count', parseInt(combo_a.value) + parseInt(combo_b.value));
         });
     });
@@ -99,9 +97,8 @@
         const time = time_el.nextElementSibling.value;
         const result = showtimes.filter(v => v.cinema === cinema && v.day === day && v.time === time);
         showtime_el.value = result.length ? result[0]['id'] : null;
-        console.log(showtime_el.value, original_showtime);
         if (showtime_el.value !== original_showtime) {
-            seats = [];
+            selected_seats = [];
             pay_btn.disabled = true;
         }
         generate_seats(showtime_el.value);

@@ -5,10 +5,6 @@ $config = array(
     'scripts' => array('./libs/javascript/pages/movie.js')
 );
 
-require_once './api/config/database.php';
-$database = new Database();
-$db = $database->getConnection();
-
 require_once './components/layout_header.php';
 ?>
 
@@ -30,14 +26,9 @@ require_once './components/layout_header.php';
     ?>
     <div id='text_container'>
         <?php
-            require_once './api/config/database.php';
             require_once './api/models/movie.php';
-
-            $database = new Database();
-            $db = $database->getConnection();
-
-            $movie = new Movie($db);
-            $movie_details = $movie->getId($_GET['movie']);
+            $movie = new Movie();
+            $movie_details = $movie->getById($_GET['movie']);
 
             echo "<p id='movie_name'>".$movie_details['name']."</p>";
             echo "<hr>";
@@ -75,7 +66,7 @@ require_once './components/layout_header.php';
             echo '</div>';
 
             /* check if movie is available then renders the button */
-            if ($movie_details['is_showing'] === '1') {
+            if ($movie_details['is_showing'] == '1') {
                 echo "<button id='book_btn' class='live_btn' onclick='clickBook(\"".$movie_details['id']."\")'>Book</button>";
             } else {
                 echo "<button id='book_btn' class='dead_btn'>Book</button>";

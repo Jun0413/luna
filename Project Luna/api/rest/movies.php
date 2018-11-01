@@ -1,17 +1,13 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-include_once '../config/database.php';
+
 include_once '../models/movie.php';
+$movie = new Movie();
+$result = $movie->getAll(null);
 
-$database = new Database();
-$db = $database->getConnection();
-
-$movie = new Movie($db);
-$stmt = $movie->getAll(null);
-
-$result = array();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+$data = array();
+while ($row = $result->fetch_assoc()) {
     extract($row);
     $item = array(
         "id" => $id,
@@ -22,6 +18,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         "rating" => $rating,
         "is_showing" => $is_showing == '1'
     );
-    array_push($result, $item);
+    array_push($data, $item);
 }
-echo json_encode($result);
+echo json_encode($data);

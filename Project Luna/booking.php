@@ -22,8 +22,8 @@ require_once './components/layout_header.php';
                 <label for="combo_a">Combo A <br>$9.00</label>
                 <div class="input">
                     <input type="number" name="combo_a" id="combo_a" value="0" readonly form="details">
-                    <button class="plus">+</button>
-                    <button class="minus">-</button>
+                    <button class="plus control-button">+</button>
+                    <button class="minus control-button">-</button>
                 </div>
             </div>
         </div>
@@ -33,8 +33,8 @@ require_once './components/layout_header.php';
                 <label for="combo_b">Combo B <br>$8.50</label>
                 <div class="input">
                     <input type="number" name="combo_b" id="combo_b" value="0" readonly form="details">
-                    <button class="plus">+</button>
-                    <button class="minus">-</button>
+                    <button class="plus control-button">+</button>
+                    <button class="minus control-button">-</button>
                 </div>
             </div>
         </div>
@@ -48,10 +48,11 @@ require_once './components/layout_header.php';
         <input type="text" id="day" name="da" hidden>
         <label for="time" class="select" data-icon-before="time"><span>Choose Time</span></label>
         <input type="text" id="time" name="time" hidden>
-        <form action="payment.php" method="post" id="details">
+        <form action="api/rest/updateBooking.php" method="post" id="details">
             <input type="text" id="seats" name="seats" hidden>
             <input type="text" id="showtime" name="showtime" hidden>
-            <button class="raised-button primary" disabled>pay</button>
+            <button class="raised-button primary" disabled>next</button>
+            <input type="text" name="type" value="ADD_SHOWTIME" hidden>
         </form>
     </section>
     <section class="bottom">

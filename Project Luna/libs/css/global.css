@@ -184,10 +184,28 @@ html {
 [data-icon-before=genre]::before {
   background: url(../../images/icons/genre.svg) center/cover no-repeat; }
 
+[data-icon=bin] {
+  content: url(../../images/icons/bin.svg); }
+
+[data-icon-after=bin]::after,
+[data-icon-before=bin]::before {
+  background: url(../../images/icons/bin.svg) center/cover no-repeat; }
+
 [data-icon-after=none]:hover::after,
 [data-icon-before=none]:hover::before {
   transition: background;
   background: url(../../images/icons/none_active.svg) center/cover no-repeat; }
+
+*:hover > [data-icon] {
+  content: url(../../images/icons/none_active.svg); }
+
+[data-icon-after=bin]:hover::after,
+[data-icon-before=bin]:hover::before {
+  transition: background;
+  background: url(../../images/icons/bin_active.svg) center/cover no-repeat; }
+
+*:hover > [data-icon] {
+  content: url(../../images/icons/bin_active.svg); }
 
 nav {
   background: transparent;

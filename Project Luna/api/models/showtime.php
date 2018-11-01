@@ -17,8 +17,10 @@ class Showtime extends Base {
                   LEFT JOIN cinema c on h.cinema_id = c.id
                   WHERE s.id = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $id);
+        $stmt->bind_param('i', $id);
         $stmt->execute();
-        return $stmt->rowCount() ? $stmt->fetch(PDO::FETCH_ASSOC) : null;
+        $result = $stmt->get_result();
+
+        return $result->num_rows ? $result->fetch_assoc() : null;
     }
 }
