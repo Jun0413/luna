@@ -184,6 +184,20 @@ html {
 [data-icon-before=genre]::before {
   background: url(../../images/icons/genre.svg) center/cover no-repeat; }
 
+[data-icon=phone] {
+  content: url(../../images/icons/phone.svg); }
+
+[data-icon-after=phone]::after,
+[data-icon-before=phone]::before {
+  background: url(../../images/icons/phone.svg) center/cover no-repeat; }
+
+[data-icon=mail] {
+  content: url(../../images/icons/mail.svg); }
+
+[data-icon-after=mail]::after,
+[data-icon-before=mail]::before {
+  background: url(../../images/icons/mail.svg) center/cover no-repeat; }
+
 [data-icon-after=none]:hover::after,
 [data-icon-before=none]:hover::before {
   transition: background;

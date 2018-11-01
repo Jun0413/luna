@@ -6,16 +6,36 @@ class Database
     private $db_name = 'f37ee';
     private $username = 'f37ee';
     private $password = 'f37ee';
-    public $conn;
+    
+    private static $db;
+    private $conn;
 
-    public function getConnection()
-    {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-        } catch (PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
+    private function __construct() {
+        $this->conn = new mysqli($this->host, $this->username, $this->password);
+
+        if ($this->conn->connect_errno) {
+            die('Connection failed');
         }
-        return $this->conn;
+
+        @$this->conn->select_db($this->db_name);
+        $this->initialize();
+    }
+
+    private function initialize() {
+        $query = "SHOW TABLES LIKE 'movie'";
+        if($this->conn->query($query)->num_rows) {
+            return;
+        }
+    }
+
+    function __destruct() {
+        $this->conn->close();
+    }
+
+    public static function getConnection() {
+        if(self::$db == null) {
+            self::$db = new Database();
+        }
+        return self::$db->conn;
     }
 }

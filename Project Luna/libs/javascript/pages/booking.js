@@ -99,9 +99,8 @@
         const time = time_el.nextElementSibling.value;
         const result = showtimes.filter(v => v.cinema === cinema && v.day === day && v.time === time);
         showtime_el.value = result.length ? result[0]['id'] : null;
-        console.log(showtime_el.value, original_showtime);
         if (showtime_el.value !== original_showtime) {
-            seats = [];
+            selected_seats = [];
             pay_btn.disabled = true;
         }
         generate_seats(showtime_el.value);

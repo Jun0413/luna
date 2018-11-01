@@ -1,12 +1,9 @@
 <?php
 session_start();
-require_once './api/config/database.php';
 require_once './api/models/movie.php';
 require_once './api/models/cinema.php';
-$database = new Database();
-$db = $database->getConnection();
-$movie = new Movie($db);
-$cinema = new Cinema($db);
+$movie = new Movie();
+$cinema = new Cinema();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $showtime_id = $_POST['showtime'];
@@ -31,9 +28,9 @@ $config = array(
 
 $query = "SELECT id, name, length, genre
           FROM movie WHERE is_showing = 0";
-$stmt = $movie->getAll($query);
+$result = $movie->getAll($query);
 $movies = array();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+while ($row = $result->fetch_assoc()) {
     array_push($movies, $row);
 }
 

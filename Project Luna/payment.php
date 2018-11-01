@@ -1,7 +1,5 @@
 <?php
 session_start();
-require_once './api/config/database.php';
-require_once './api/models/showtime.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' || !isset($_POST['showtime']) || !isset($_POST['seats'])) {
     header('Location: home.php');
@@ -13,9 +11,8 @@ $_SESSION['combo_b'] = $_POST['combo_b'];
 $_SESSION['showtime'] = $_POST['showtime'];
 $_SESSION['seats'] = $_POST['seats'];
 
-$database = new Database();
-$db = $database->getConnection();
-$showtime = new Showtime($db);
+require_once './api/models/showtime.php';
+$showtime = new Showtime();
 $detail = $showtime->getById($_POST['showtime']);
 $time = explode(':', $detail['time']);
 $detail['time'] = date('M d D H:i', mktime($time[0], $time[1], 0,

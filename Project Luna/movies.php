@@ -5,16 +5,12 @@ $config = array(
     'scripts' => array('./libs/javascript/pages/movies.js')
 );
 
-require_once './api/config/database.php';
 require_once './api/models/movie.php';
-
-$database = new Database();
-$db = $database->getConnection();
-$movie = new Movie($db);
-$stmt = $movie->getAll("SELECT * from movie ORDER BY is_showing DESC, id");
+$movie = new Movie();
+$result = $movie->getAll("SELECT * from movie ORDER BY is_showing DESC, id");
 
 $movies = array();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+while ($row = $result->fetch_assoc()) {
     extract($row);
     $item = array(
         "id" => $id,
