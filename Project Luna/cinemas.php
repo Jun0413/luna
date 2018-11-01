@@ -15,39 +15,32 @@ require_once './components/layout_header.php';
 
     <section>
         <div class='cinemas'>
-            <a href="showtime.php?cinema=1&movie=0">
-                <img src="./images/cinemas/1.jpg">
+        <?php 
+            require_once './api/models/cinema.php';
+            $cinema = new Cinema();
+            $query = 'SELECT c.id, c.name, c.address, c.phone, 
+                        SUM(is_imax) > 0 AS is_imax, SUM(is_dolby) > 0 as is_dolby 
+                        FROM hall h LEFT JOIN cinema c on h.cinema_id = c.id GROUP BY cinema_id;';
+            $result = $cinema->getAll($query);
+            while($row = $result->fetch_assoc()) {
+        ?>
+            <a href="showtime.php?cinema=<?php echo $row['id'] ?>&movie=0">
+                <img src="./images/cinemas/<?php echo $row['id'] ?>.jpg">
                 <div>
-                    <h1 data-icon-after="dolby" class="icon">Luna Clementi</h1>
-                    <p>3150 Commonwealth Avenue West</p>
-                    <p>68129580</p>
+                    <h1>
+                        <?php 
+                        echo $row['name'];
+                        if($row['is_imax']) echo "<i data-icon='imax'></i>";
+                        if($row['is_dolby']) echo "<i data-icon='dolby'></i>";
+                        ?>
+                    </h1>
+                    <p><?php echo $row['address'] ?></p>
+                    <p><?php echo $row['phone'] ?></p>
                 </div>
             </a>
-            <a href="showtime.php?cinema=2&movie=0">
-                <img src="./images/cinemas/2.jpg">
-                <div>
-                    <h1>Luna Bedok</h1>
-                    <p>315 New Upper Changi Road</p>
-                    <p>68467347</p>
-                </div>
-            </a>
-            <a href="showtime.php?cinema=3&movie=0">
-                <img src="./images/cinemas/3.jpg">
-                <div>
-                    <h1 data-icon-after="imax" class="icon">Luna Orchard</h1>
-                    <!-- <label ><span>Choose Cinema</span></label> -->
-                    <p>2 Orchard Turn</p>
-                    <p>68238801</p>
-                </div>
-            </a>
-            <a href="showtime.php?cinema=4&movie=0">
-                <img src="./images/cinemas/4.jpg">
-                <div>
-                    <h1 data-icon-after="imax" class="icon">Luna Bayfront<span data-icon-after="dolby" class="icon"></span></h1>
-                    <p>10 Bayfront Avenue</p>
-                    <p>68018956</p>
-                </div>
-            </a>
+        <?php
+            }
+        ?>
         </div>    
     </section>
 </main>

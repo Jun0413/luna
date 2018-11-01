@@ -1,5 +1,5 @@
-$icons: location movie date time imax dolby credit visa paypal mastercard sort child region genre;
-$active_icons: none;
+$icons: location movie date time imax dolby credit visa paypal mastercard sort child region genre bin;
+$active_icons: none bin;
 @each $icon in $icons {
     [data-icon=#{$icon}] {
         content: url(../../images/icons/#{$icon}.svg);
@@ -15,5 +15,8 @@ $active_icons: none;
     [data-icon-before=#{$icon}]:hover::before {
         transition: background;
         background: url(../../images/icons/#{$icon}_active.svg) center / cover no-repeat;
+    }
+    *:hover > [data-icon] {
+        content: url(../../images/icons/#{$icon}_active.svg);
     }
 }
