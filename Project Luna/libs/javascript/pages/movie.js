@@ -22,7 +22,8 @@ window.addEventListener('load', () => {
     const slideBtns = document.createElement('DIV');
     slideBtns.id = 'slide_buttons';
     // slideBtns.innerHTML = 'slide buttons';
-    slideBtns.innerHTML = `<button id='overview_btn' onclick='return clickOverview()'>overview</button><button id='details_btn' onclick='return clickDetails()'>details</button>`;
+    slideBtns.innerHTML = `<button id='overview_btn' class='active' onclick='return clickOverview(this)'>overview</button>
+    <button id='details_btn' onclick='return clickDetails(this)'>details</button>`;
     slideshow.appendChild(slideBtns);
 
     container.appendChild(container.firstElementChild.cloneNode(true));
@@ -51,10 +52,16 @@ window.addEventListener('load', () => {
     start();
 });
 
-function clickOverview() {
+function toggleButton(button) {
+    [...button.parentElement.children].forEach(el => el.classList.remove('active'));
+    button.classList.add('active');
+}
+
+function clickOverview(button) {
     // document.getElementById('details_text').style.display = 'none';
     // document.getElementById('overview_text').style.display = 'block';
     document.getElementById('tab_name').innerHTML = 'Overview';
+    toggleButton(button);
 
     // fade out
     document.getElementById('description').style.opacity = 0;
@@ -67,10 +74,11 @@ function clickOverview() {
 
 }
 
-function clickDetails() {
+function clickDetails(button) {
     // document.getElementById('details_text').style.display = 'block';
     // document.getElementById('overview_text').style.display = 'none';
     document.getElementById('tab_name').innerHTML = 'Details';
+    toggleButton(button);
 
     // fade out
     document.getElementById('description').style.opacity = 0;

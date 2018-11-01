@@ -77,7 +77,7 @@ require_once './components/layout_header.php';
                 if ($_SESSION['combo_b']) {
                     echo "
                         <tr class='header combo expanded' onclick='this.classList.toggle(\"expanded\")'>
-                            <td>Snack - Combo A x" . $_SESSION['combo_b'] . "</td>
+                            <td>Snack - Combo B x" . $_SESSION['combo_b'] . "</td>
                             <td>$" . number_format($combo_b_price, 2) . "</td>
                             <td><i data-icon='bin' data-combo='b'></i></td>
                         </tr>

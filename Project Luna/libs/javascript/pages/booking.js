@@ -14,7 +14,7 @@
             const input = el.parentElement.querySelector('input');
             const add = el.classList.contains('plus');
             const value = add ? Math.min(+input.value + 1, 99) : Math.max(+input.value - 1, 0);
-            const data = {type: 'UPDATE_COMBO', 'combo_a': window.combo_a.value, 'combo_b': window.combo_b.value};
+            const data = {type: 'UPDATE_COMBO', [input.name]: value};
             const req = await fetch('api/rest/updateBooking.php', {body: JSON.stringify(data), method: 'post'});
             const result = await req.json();
             if (result.success) input.value = value;

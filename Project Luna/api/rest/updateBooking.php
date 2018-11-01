@@ -11,11 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !isset($data)) {
 
 
 $result = ["success" => true];
-// try {
+try {
     switch ($data['type']) {
         case 'UPDATE_COMBO':
-            $_SESSION['combo_a'] = $data['combo_a'];
-            $_SESSION['combo_b'] = $data['combo_b'];
+            if(isset($data['combo_a'])) {
+                $_SESSION['combo_a'] = $data['combo_a'];
+            }
+            if (isset($data['combo_b'])) {
+                $_SESSION['combo_b'] = $data['combo_b'];
+            }
             break;
         case 'ADD_SHOWTIME':
             if (!isset($_SESSION['showtimes'])) {
@@ -27,9 +31,9 @@ $result = ["success" => true];
         case 'REMOVE_SHOWTIME':
             unset($_SESSION['showtimes'][$data['showtime']]);
     }
-// } catch (Exception $ex) {
-    // $result['success'] = false;
-// }
+} catch (Exception $ex) {
+    $result['success'] = false;
+}
 
 echo json_encode($result);
 

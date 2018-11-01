@@ -12,14 +12,14 @@ require_once './components/layout_header.php';
     <section class='top'>
     <?php
         require_once './components/slideshow.php';
+        $movieId = $_GET['movie'];
         $show_config = array(
                 'delay' => 4000,
                 'speed'=> 500,
                 'items' => array(
-                        array('_name' => 'Crazy Rich Asian', '_src' => 'slideshow/crazy_rich_asian.jpg', '_target' => ''),
-                        array('_name' => 'Europe Raiders', '_src' => 'slideshow/europe_raiders.jpg', '_target' => ''),
-                        array('_name' => 'Fantastic Beast', '_src' => 'slideshow/fantastic_beasts.jpg', '_target' => ''),
-                        array('_name' => 'Sui Dhaaga', '_src' => 'slideshow/sui_dhaaga.jpg', '_target' => '')
+                        array('_name' => 'Photo 1', '_src' => 'photos/'.$movieId.'_1.jpg', '_target' => ''),
+                        array('_name' => 'Photo 2', '_src' => 'photos/'.$movieId.'_2.jpg', '_target' => ''),
+                        array('_name' => 'Photo 3', '_src' => 'photos/'.$movieId.'_3.jpg', '_target' => '')
                 )
         );
         slide_show($show_config);
@@ -28,7 +28,7 @@ require_once './components/layout_header.php';
         <?php
             require_once './api/models/movie.php';
             $movie = new Movie();
-            $movie_details = $movie->getById($_GET['movie']);
+            $movie_details = $movie->getById($movieId);
 
             echo "<p id='movie_name'>".$movie_details['name']."</p>";
             echo "<hr>";

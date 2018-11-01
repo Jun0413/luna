@@ -5,7 +5,7 @@ include_once '../config/database.php';
 include_once '../models/showtime.php';
 $db = Database::getConnection();
 $showtime = new Showtime($db);
-$query = "SELECT s.id, c.id as cid, c.name as cinema, m.id as mid, m.name as movie, s.day, s.start_time as time 
+$query = "SELECT s.id, c.id as cid, c.name as cinema, m.id as mid, m.name as movie, m.length, m.genre, s.day, s.start_time as time 
           FROM showtime s 
           LEFT JOIN hall h ON s.hall_id = h.id 
           LEFT JOIN cinema c ON h.cinema_id = c.id 
@@ -21,6 +21,8 @@ while ($row = $result->fetch_assoc()) {
         "cinema" => $cinema,
         "mid" => $mid,
         "movie" => $movie,
+        "length" => $length,
+        "genre" => $genre,
         "day" => $day,
         "time" => substr($time, 0, 5)
     );
