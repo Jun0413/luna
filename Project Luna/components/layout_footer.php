@@ -6,5 +6,6 @@ foreach ($config['scripts'] as $script) {
     echo "<script type='application/javascript' src='$script'></script>";
 }
 ?>
+<script src="./libs/javascript/login.js"></script>
 </body>
 </html>

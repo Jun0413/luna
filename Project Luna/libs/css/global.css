@@ -210,7 +210,7 @@ html {
   transition: background;
   background: url(../../images/icons/none_active.svg) center/cover no-repeat; }
 
-*:hover > [data-icon] {
+*:hover > [data-icon=none] {
   content: url(../../images/icons/none_active.svg); }
 
 [data-icon-after=bin]:hover::after,
@@ -218,7 +218,7 @@ html {
   transition: background;
   background: url(../../images/icons/bin_active.svg) center/cover no-repeat; }
 
-*:hover > [data-icon] {
+*:hover > [data-icon=bin] {
   content: url(../../images/icons/bin_active.svg); }
 
 nav {
