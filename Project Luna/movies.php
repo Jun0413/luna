@@ -29,7 +29,7 @@ require_once './components/layout_header.php';
 
 <main>
     <section class="top">
-        <form>
+        <form id="movie_filter">
             <label for="genre" class="select" data-icon-before="genre"><span>Choose Genre</span></label>
             <input type="text" id="genre" name="genre" hidden>
             <label for="region" class="select" data-icon-before="region"><span>Choose Region</span></label>
