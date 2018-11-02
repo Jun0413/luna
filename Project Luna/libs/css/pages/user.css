@@ -1,0 +1,64 @@
+.bookings, .user_header {
+    margin-right: 100px;
+    margin-left: 100px;
+    color: white;
+}
+
+.user_header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user_profile {
+    width: 400px;
+    /* float: right; */
+    position: relative;
+}
+
+.user_info  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+
+.user_profile i {
+    float: right;
+    width: 180px;
+}
+
+.user_profile hr {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    width: 135%;
+}
+
+.bookings {
+    margin-top: 30px;
+}
+
+.bookings h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.bookings table {
+    margin: auto;
+    width: 80%;
+    color: black;
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+.bookings td {
+    padding: 1rem;   
+}
+
+.bookings table tr:nth-child(odd) {
+    background-color: #d3d3d3;    
+}

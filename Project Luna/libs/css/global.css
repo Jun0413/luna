@@ -221,6 +221,9 @@ html {
 *:hover > [data-icon=bin] {
   content: url(../../images/icons/bin_active.svg); }
 
+[data-icon=avatar] {
+  content: url(../../images/icons/avatar.svg); }
+
 nav {
   background: transparent;
   position: absolute;

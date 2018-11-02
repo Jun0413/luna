@@ -26,7 +26,7 @@
             echo "<li><a href='$link.php'" . ($config['navLink'] == $link ? " class='active'" : "") . ">$link</a></li>";
         }
         if (isset($_SESSION['user_name'])) {
-            echo "<li><a>".$_SESSION['user_name']."</a></li>";
+            echo "<li><a href='user.php'>".$_SESSION['user_name']."</a></li>";
             echo "<li><a href='./api/rest/logoutUser.php?p=".$config['navLink']."'>log out</a></li>";
         } else {
             echo "<li onclick=\"document.getElementById('login-modal').style.display='block';document.body.style.overflow='hidden'\"><a>login</a></li>";
