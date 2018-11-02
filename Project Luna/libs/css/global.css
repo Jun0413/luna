@@ -191,6 +191,41 @@ html {
 [data-icon-before=bin]::before {
   background: url(../../images/icons/bin.svg) center/cover no-repeat; }
 
+[data-icon=phone] {
+  content: url(../../images/icons/phone.svg); }
+
+[data-icon-after=phone]::after,
+[data-icon-before=phone]::before {
+  background: url(../../images/icons/phone.svg) center/cover no-repeat; }
+
+[data-icon=mail] {
+  content: url(../../images/icons/mail.svg); }
+
+[data-icon-after=mail]::after,
+[data-icon-before=mail]::before {
+  background: url(../../images/icons/mail.svg) center/cover no-repeat; }
+
+[data-icon=search] {
+  content: url(../../images/icons/search.svg); }
+
+[data-icon-after=search]::after,
+[data-icon-before=search]::before {
+  background: url(../../images/icons/search.svg) center/cover no-repeat; }
+
+[data-icon=logout] {
+  content: url(../../images/icons/logout.svg); }
+
+[data-icon-after=logout]::after,
+[data-icon-before=logout]::before {
+  background: url(../../images/icons/logout.svg) center/cover no-repeat; }
+
+[data-icon=login] {
+  content: url(../../images/icons/login.svg); }
+
+[data-icon-after=login]::after,
+[data-icon-before=login]::before {
+  background: url(../../images/icons/login.svg) center/cover no-repeat; }
+
 [data-icon-after=none]:hover::after,
 [data-icon-before=none]:hover::before {
   transition: background;
@@ -207,6 +242,22 @@ html {
 *:hover > [data-icon=bin] {
   content: url(../../images/icons/bin_active.svg); }
 
+[data-icon-after=logout]:hover::after,
+[data-icon-before=logout]:hover::before {
+  transition: background;
+  background: url(../../images/icons/logout_active.svg) center/cover no-repeat; }
+
+*:hover > [data-icon=logout] {
+  content: url(../../images/icons/logout_active.svg); }
+
+[data-icon-after=login]:hover::after,
+[data-icon-before=login]:hover::before {
+  transition: background;
+  background: url(../../images/icons/login_active.svg) center/cover no-repeat; }
+
+*:hover > [data-icon=login] {
+  content: url(../../images/icons/login_active.svg); }
+
 nav {
   background: transparent;
   position: absolute;
@@ -215,6 +266,7 @@ nav {
   width: 100%;
   color: #f1b451;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 5%;
   height: 4rem; }
@@ -267,6 +319,12 @@ nav {
           left: 25%;
           visibility: visible; }
 
+.left-nav, .right-nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%; }
+
 main {
   min-height: 100vh;
   width: 100%;
@@ -285,3 +343,77 @@ footer {
   color: #aaa; }
   footer p {
     margin: 0; }
+
+.search-bar {
+  position: relative;
+  margin-right: 1rem;
+  margin-right: 1rem; }
+  .search-bar #search {
+    background: transparent;
+    border: none;
+    color: #FFF;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #666;
+    outline: none;
+    width: 18rem;
+    transition: border-color .3s ease;
+    letter-spacing: 1px; }
+    .search-bar #search::-webkit-input-placeholder {
+      color: #666; }
+    .search-bar #search:focus {
+      border-color: #f1b451; }
+      .search-bar #search:focus ~ button i {
+        content: url("../../images/icons/search_active.svg"); }
+  .search-bar button {
+    position: absolute;
+    right: 0;
+    top: calc(50% - .5rem);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent; }
+    .search-bar button i {
+      width: 1rem; }
+
+.right-nav .profile {
+  min-width: 8rem; }
+  .right-nav .profile a {
+    color: #DDD;
+    text-align: right;
+    display: flex;
+    align-items: center; }
+  .right-nav .profile h4 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    white-space: nowrap; }
+  .right-nav .profile button {
+    font-size: 1.3rem;
+    transition: width .3s ease;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #999;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 4rem;
+    white-space: nowrap; }
+    .right-nav .profile button:hover {
+      color: #f1b451; }
+    .right-nav .profile button i {
+      width: 1.3rem;
+      margin-right: 5px;
+      vertical-align: middle; }
+  .right-nav .profile h4 + button {
+    font-size: 1rem;
+    line-height: 1.2rem; }
+    .right-nav .profile h4 + button i {
+      width: 1rem; }
+  .right-nav .profile .profile-pic {
+    margin-left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background: #333 url(../../images/profile.svg) center/cover no-repeat;
+    float: right;
+    border-radius: 50%;
+    border: 1px solid #f1b451; }

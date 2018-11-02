@@ -1,5 +1,5 @@
 (function () {
-    const form = document.forms[0];
+    const form = document.forms['profile'];
     const pay_btn = document.querySelector('.pay-button');
     const warning = document.querySelector('.warning');
 

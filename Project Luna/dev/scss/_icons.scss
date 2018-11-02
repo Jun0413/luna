@@ -1,5 +1,5 @@
-$icons: location movie date time imax dolby credit visa paypal mastercard sort child region genre bin;
-$active_icons: none bin;
+$icons: location movie date time imax dolby credit visa paypal mastercard sort child region genre bin phone mail search logout login;
+$active_icons: none bin logout login;
 @each $icon in $icons {
     [data-icon=#{$icon}] {
         content: url(../../images/icons/#{$icon}.svg);

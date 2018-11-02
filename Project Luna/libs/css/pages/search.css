@@ -1,0 +1,66 @@
+main {
+  color: #FFF; }
+  main a {
+    color: #FFF;
+    transition: transform .3s ease; }
+    main a:hover {
+      transform: scale3d(1.05, 1.05, 1.05); }
+  main h2 {
+    font-size: 1.2rem;
+    margin: .5rem 0; }
+  main h1 {
+    flex: 0 0 100%;
+    font-size: 1.5rem;
+    line-height: 4rem; }
+    main h1 span {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      opacity: 1;
+      color: #FFF;
+      text-align: left;
+      width: 8rem;
+      line-height: 2;
+      position: relative;
+      margin-bottom: 1rem;
+      text-align: center; }
+      main h1 span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 60%;
+        left: 20%;
+        border-bottom: 2px solid #f1b451;
+        bottom: 10%;
+        transition: all .3s ease-in; }
+    main h1::after {
+      content: attr(data-count);
+      font-size: 1rem;
+      margin-left: 1rem; }
+  main p {
+    line-height: 1.2rem; }
+  main .cinemas {
+    margin: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem; }
+    main .cinemas a {
+      flex: 0 0 45%;
+      margin: 0 2.5% 2rem; }
+    main .cinemas img {
+      max-width: 100%;
+      width: 20vw;
+      height: 13.33vw;
+      float: left;
+      margin-right: 1rem; }
+  main .movies {
+    margin: 0 5%;
+    display: flex;
+    flex-wrap: wrap; }
+    main .movies a {
+      flex: 0 0 15%;
+      text-align: center;
+      margin: 0 2.5% 1rem; }
+    main .movies img {
+      max-width: 100%; }

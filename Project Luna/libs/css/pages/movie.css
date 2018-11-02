@@ -143,8 +143,16 @@
     position: relative;
 }
 
-.dead_btn {
-    background-color: #aaaaaa;
+#book_btn.dead_btn {
+    background: transparent;
+    color: #666;
+    white-space: nowrap;
+    font-weight: lighter;
+    padding: 0 1rem;
+    border: 1px solid #666;
+    width: auto;
+    outline: none;
+    font-size: .9rem;
 }
 
 .live_btn:active {

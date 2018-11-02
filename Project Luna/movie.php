@@ -69,7 +69,7 @@ require_once './components/layout_header.php';
             if ($movie_details['is_showing'] == '1') {
                 echo "<button id='book_btn' class='live_btn' onclick='clickBook(\"".$movie_details['id']."\")'>Book</button>";
             } else {
-                echo "<button id='book_btn' class='dead_btn'>Book</button>";
+                echo "<button id='book_btn' class='dead_btn'>Coming Soon</button>";
             }
         ?>
         <!-- </div> -->

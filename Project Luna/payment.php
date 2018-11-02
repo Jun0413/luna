@@ -100,7 +100,7 @@ require_once './components/layout_header.php';
 
     <section class="right">
         <p class="warning"><span>Please fill the form!</span> <i onclick="this.parentElement.style.display='none'">&times;</i></p>
-        <form action="" id="payment">
+        <form action="" id="payment" name="profile">
             <input type="text" placeholder="Your Name" name="name" id="name" required>
             <input type="email" placeholder="Email Address" name="email" id="email" required>
         </form>

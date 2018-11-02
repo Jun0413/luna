@@ -12,6 +12,7 @@ nav {
   width: 100%;
   color: color(primary);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 5%;
   height: $navHeight;
@@ -43,6 +44,13 @@ nav {
   }
 }
 
+.left-nav, .right-nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
 main {
   min-height: 100vh;
   width: 100%;
@@ -62,5 +70,98 @@ footer {
   color: #aaa;
   p {
     margin: 0;
+  }
+}
+
+
+.search-bar {
+  position: relative;
+  margin-right: 1rem;
+  #search {
+    &::-webkit-input-placeholder {
+      color: #666;
+    }
+    background: transparent;
+    border: none;
+    color: #FFF;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #666;
+    outline: none;
+    width: 18rem;
+    transition: border-color .3s ease;
+    letter-spacing: 1px;
+    &:focus {
+      border-color: color(primary);
+    ~ button i {
+        content: url('../../images/icons/search_active.svg');
+      }
+    }
+  }
+  margin-right: 1rem;
+  button {
+    position: absolute;
+    right: 0;
+    top: calc(50% - .5rem);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    i {
+      width: 1rem;
+    }
+  }
+}
+
+.right-nav {
+  .profile {
+    min-width: 8rem;
+    $size: 3rem;
+    a {
+      color: #DDD;
+      text-align: right;
+      display: flex;
+      align-items: center;
+    }
+    h4 {
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+      white-space: nowrap;
+    }
+    button {
+      font-size: 1.3rem;
+      transition: width .3s ease;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #999;
+      padding: 0;
+      cursor: pointer;
+      display: inline-block;
+      line-height: $navHeight;
+      white-space: nowrap;      &:hover {
+        color: color(primary);
+      }
+      i {
+        width: 1.3rem;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+    }
+    h4 + button {
+      font-size: 1rem;
+      line-height: 1.2rem;
+      i {
+        width: 1rem;
+      }
+    }
+    .profile-pic {
+      margin-left: 1rem;
+      width: $size;
+      height: $size;
+      background: #333 url(../../images/profile.svg) center / cover no-repeat;
+      float: right;
+      border-radius: 50%;
+      border: 1px solid color(primary);
+    }
   }
 }

@@ -13,7 +13,7 @@
         sorts: ['Movie Name', 'Movie Length', 'Release Date']
     };
 
-    const form = document.forms[0];
+    const form = document.forms['filters'];
 
     // create select menu
     ['genre', 'region', 'rating', 'sort'].forEach(attr => {

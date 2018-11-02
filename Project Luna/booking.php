@@ -11,6 +11,11 @@ if (!isset($_GET['showtime'])) {
     die();
 }
 
+if (!isset($_SESSION['combo_a'])) {
+    $_SESSION['combo_a'] = 0;
+    $_SESSION['combo_b'] = 0;
+}
+
 require_once './components/layout_header.php';
 ?>
 

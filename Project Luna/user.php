@@ -1,8 +1,5 @@
 <?php
 session_start();
-require_once './api/config/database.php';
-$database = new Database();
-$db = $database->getConnection();
 
 $config = array(
     'navLink' => 'home',
