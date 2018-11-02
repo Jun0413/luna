@@ -1,16 +1,20 @@
 (async function () {
 
-    // fetch data
+    // fetch movie data
     const res = await fetch('api/rest/movies.php');
     const movies = await res.json();
     const movies_el = document.querySelector('.movies');
+
+    // fetch popularity data
+    const pop_res = await fetch('api/rest/popularity.php');
+    const popularities = await pop_res.json();
 
     const filter = attr => movies.map(v => v[attr]).filter((v, i, a) => a.indexOf(v) === i);
     const options = {
         genres: ['All Genres'].concat(filter('genre')),
         regions: ['All Regions'].concat(filter('region')),
         ratings: ['All Ratings'].concat(filter('rating')),
-        sorts: ['Movie Name', 'Movie Length', 'Release Date']
+        sorts: ['Movie Name', 'Movie Length', 'Release Date', 'Popularity']
     };
 
     // const form = document.forms[0];
@@ -56,7 +60,8 @@
         const sorting = {
             'Movie Name': (a, b) => a.name > b.name ? 1 : -1,
             'Movie Length': (a, b) => a.length - b.length,
-            'Release Date': (a, b) => a.id - b.id - (a.is_showing - b.is_showing) * 100
+            'Release Date': (a, b) => a.id - b.id - (a.is_showing - b.is_showing) * 100,
+            'Popularity': (a, b) => popularities[b.id] - popularities[a.id]
         };
 
         const filtered = movies.filter(v => (!genre || genre === 'All Genres' || v.genre === genre) &&
