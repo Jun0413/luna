@@ -27,22 +27,16 @@ class Base {
     }
 
     public function getById($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = $id";
+        $result = $this->conn->query($query);
 
         return $result->num_rows ? $result->fetch_assoc() : null;
     }
 
     public function getByName($name) {
         if (!$name) return null;
-        $query = "SELECT * FROM " . $this->table_name . " WHERE name = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param('s', $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $query = "SELECT * FROM " . $this->table_name . " WHERE name = '$name'";
+        $result = $this->conn->query($query);
 
         return $result->num_rows ? $result->fetch_assoc() : null;
     }

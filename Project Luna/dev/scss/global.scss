@@ -116,12 +116,10 @@ footer {
   .profile {
     min-width: 8rem;
     $size: 3rem;
-    a {
-      color: #DDD;
-      text-align: right;
-      display: flex;
-      align-items: center;
-    }
+    text-align: right;
+    display: flex;
+    align-items: center;
+    color: #DDD;
     h4 {
       font-size: 1.3rem;
       line-height: 1.5rem;
@@ -154,14 +152,20 @@ footer {
         width: 1rem;
       }
     }
-    .profile-pic {
+    .user-pic {
+      display: block;
       margin-left: 1rem;
       width: $size;
       height: $size;
-      background: #333 url(../../images/profile.svg) center / cover no-repeat;
+      background: #333 url(../../images/icons/avatar.svg) center / cover no-repeat;
       float: right;
       border-radius: 50%;
       border: 1px solid color(primary);
+      transition: all .3s ease;
+      &:hover {
+        background-color: #555;
+        transform: scale3d(1.05, 1.05, 1.05);
+      }
     }
   }
 }

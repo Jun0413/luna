@@ -273,7 +273,6 @@ fetchShowtimes();
     <button>Thomas & Friends: Big World! Big Adventures!</button>
     <button>movie 4</button> -->
 </div>
-
 <div class="ver_container">
     <div class="hor_tab">
         <!-- <button>cinema 1</button>
@@ -281,7 +280,6 @@ fetchShowtimes();
         <button>cinema 3</button>
         <button>cinema 4</button> -->
     </div>    
-
     <div id="showtime_table">
         <!-- <p>Available showtimes</p>
         <div class="day_showtime">
@@ -336,5 +334,4 @@ fetchShowtimes();
             </div>
         </div> -->
     </div>
-
 </div>*/

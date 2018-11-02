@@ -101,8 +101,10 @@ require_once './components/layout_header.php';
     <section class="right">
         <p class="warning"><span>Please fill the form!</span> <i onclick="this.parentElement.style.display='none'">&times;</i></p>
         <form action="" id="payment" name="profile">
-            <input type="text" placeholder="Your Name" name="name" id="name" required>
-            <input type="email" placeholder="Email Address" name="email" id="email" required>
+            <input type="text" placeholder="Your Name" name="name" id="name" 
+            <?php echo (isset($_SESSION['user_name']) ? "value='".$_SESSION['user_name']."'" : '') ?>required>
+            <input type="email" placeholder="Email Address" name="email" id="email" 
+            <?php echo (isset($_SESSION['user_email']) ? "value='".$_SESSION['user_email']."'" : '') ?>required>
         </form>
         <p>Please select a payment method:</p>
         <div class="payments">
@@ -127,7 +129,7 @@ require_once './components/layout_header.php';
                 <span>Credit Card</span>
             </label>
         </div>
-        <button class="raised-button primary pay-button" disabled>confirm</button>
+        <button class="raised-button primary pay-button" <?php echo (isset($_SESSION['user_name']) ? '' : 'disabled')?>>confirm</button>
     </section>
 </main>
 

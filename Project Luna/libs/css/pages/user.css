@@ -1,0 +1,132 @@
+.bookings,
+.user_header {
+    margin-right: 100px;
+    margin-left: 100px;
+    color: white;
+}
+
+.user_header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user_profile {
+    width: 400px;
+    /* float: right; */
+    position: relative;
+}
+
+.user_info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+
+.user_info p {
+    color: #999;
+}
+
+.user_info h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.user_profile i {
+    float: right;
+    width: 180px;
+}
+
+.user_profile hr {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    width: 135%;
+}
+
+.bookings {
+    margin-top: 30px;
+}
+
+.bookings h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.bookings table {
+    margin: auto;
+    width: 80%;
+    color: black;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+.bookings tbody {
+    background-color: #666;
+}
+
+.bookings td {
+    padding: 1rem;
+}
+
+.bookings tbody tr:hover td {
+    background-color: #f1b451;
+    cursor: pointer;
+}
+
+.bookings thead td {
+    color: #FFF;
+    text-transform: uppercase;
+    background-color: #333;
+}
+
+.bookings table tr:nth-child(odd) {
+    background-color: #999;
+}
+
+.upcoming,
+.past {
+    margin-bottom: 2rem;
+}
+
+main h1 {
+    flex: 0 0 100%;
+    font-size: 1.5rem;
+    line-height: 4rem;
+}
+
+main h1 span {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    opacity: 1;
+    color: #FFF;
+    text-align: left;
+    width: 8rem;
+    line-height: 2;
+    position: relative;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+main h1 span::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    border-bottom: 2px solid #f1b451;
+    bottom: 10%;
+    transition: all .3s ease-in;
+}
+
+main h1::after {
+    font-weight: lighter;
+    content: attr(data-count);
+    font-size: 1rem;
+    margin-left: 1rem;
+}

@@ -15,11 +15,8 @@ class Showtime extends Base {
                   LEFT JOIN movie m on s.movie_id = m.id
                   LEFT JOIN hall h on s.hall_id = h.id
                   LEFT JOIN cinema c on h.cinema_id = c.id
-                  WHERE s.id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+                  WHERE s.id = $id";
+        $result = $this->conn->query($query);
 
         return $result->num_rows ? $result->fetch_assoc() : null;
     }

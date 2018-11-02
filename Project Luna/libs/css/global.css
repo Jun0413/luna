@@ -226,6 +226,13 @@ html {
 [data-icon-before=login]::before {
   background: url(../../images/icons/login.svg) center/cover no-repeat; }
 
+[data-icon=avatar] {
+  content: url(../../images/icons/avatar.svg); }
+
+[data-icon-after=avatar]::after,
+[data-icon-before=avatar]::before {
+  background: url(../../images/icons/avatar.svg) center/cover no-repeat; }
+
 [data-icon-after=none]:hover::after,
 [data-icon-before=none]:hover::before {
   transition: background;
@@ -376,12 +383,11 @@ footer {
       width: 1rem; }
 
 .right-nav .profile {
-  min-width: 8rem; }
-  .right-nav .profile a {
-    color: #DDD;
-    text-align: right;
-    display: flex;
-    align-items: center; }
+  min-width: 8rem;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  color: #DDD; }
   .right-nav .profile h4 {
     font-size: 1.3rem;
     line-height: 1.5rem;
@@ -409,11 +415,16 @@ footer {
     line-height: 1.2rem; }
     .right-nav .profile h4 + button i {
       width: 1rem; }
-  .right-nav .profile .profile-pic {
+  .right-nav .profile .user-pic {
+    display: block;
     margin-left: 1rem;
     width: 3rem;
     height: 3rem;
-    background: #333 url(../../images/profile.svg) center/cover no-repeat;
+    background: #333 url(../../images/icons/avatar.svg) center/cover no-repeat;
     float: right;
     border-radius: 50%;
-    border: 1px solid #f1b451; }
+    border: 1px solid #f1b451;
+    transition: all .3s ease; }
+    .right-nav .profile .user-pic:hover {
+      background-color: #555;
+      transform: scale3d(1.05, 1.05, 1.05); }

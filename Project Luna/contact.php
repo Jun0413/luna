@@ -2,7 +2,7 @@
 $config = array(
     'navLink' => 'contact',
     'styles' => array('./libs/css/pages/contact.css'),
-    'scripts' => array('./libs/javascript/pages/contact.js')
+    'scripts' => array()
 );
 
 require_once './components/layout_header.php';
@@ -30,7 +30,7 @@ require_once './components/layout_header.php';
                     <input type="text" name="name" placeholder="Your Name" required><br>
                     <input type="email" name="email" placeholder="Your Email" required><br>
                     <textarea rows="10" name="feedback" placeholder="What you want us to know..." required></textarea>
-                    <input type="submit" value="Submit" onclick="return alert('Thank you for your feedback!');">
+                    <button class="primary raised-button" type="submit" onclick="alert('Thank you for your feedback!')">Submit</button>
                 <!-- </form> -->
             </div>
         </div>

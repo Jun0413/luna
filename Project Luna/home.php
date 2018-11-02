@@ -5,7 +5,7 @@ require_once './api/models/cinema.php';
 $movie = new Movie();
 $cinema = new Cinema();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['byLoginForm'])) {
     $showtime_id = $_POST['showtime'];
     $movie_name = $_POST['movie'];
     $cinema_name = $_POST['cinema'];
