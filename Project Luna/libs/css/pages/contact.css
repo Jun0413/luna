@@ -1,6 +1,6 @@
 .top {
     height: 25vw;
-    background-color: #ccc;
+    background: url(../../../images/map.jpg) center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +37,7 @@ img {
 }
 
 #contact_inner a p:hover {
-    color: #0000ff;
+    color: #ff9d00;
     text-decoration-line: underline;
 }
 
@@ -66,17 +66,40 @@ img {
 #feedback input, #feedback textarea {
     width: calc(100% - 5rem);
     margin-top: 1.8rem;
+    padding: .5rem 1rem;
+    font-size: 1rem;
 }
 
-#feedback input[type="submit"] {
-    width: 35%;
-    height: 30px;
+#feedback .raised-button {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 35px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    background-color: #f1b451;
+    border-style: none;
+    text-transform: uppercase;
 }
 
-#feedback input[type="submit"]:hover {
-    background-color: #e0e0e0;
+#feedback .raised-button::after {
+    content: '';
+    display: block;
+    background: #FFF;
+    opacity: .5;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: -90%;
+    transition: bottom .2s ease-in;
+    cursor: pointer;
 }
 
-#feedback input[type="submit"]:active {
+#feedback .raised-button:hover::after {
+    bottom: 0;
+}
+
+#feedback .raised-button:active {
     transform: translateY(2px);
 }

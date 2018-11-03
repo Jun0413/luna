@@ -1,5 +1,5 @@
 (function () {
-    const form = document.forms[0];
+    const form = document.forms['profile'];
     const pay_btn = document.querySelector('.pay-button');
     const warning = document.querySelector('.warning');
 
@@ -80,5 +80,62 @@
     form.email.addEventListener('change', validate_form);
 
     pay_btn.addEventListener('click', makePayment);
+
+    [...document.querySelectorAll('i[data-id]')].forEach(el => {
+        el.parentElement.addEventListener('click', e => e.stopPropagation());
+        el.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const data = {
+                type: 'REMOVE_SHOWTIME',
+                showtime: el.dataset.id
+            };
+            const parent = e.target.parentElement.parentElement;
+            const movie = parent.firstElementChild.textContent.split('x')[0].split('-')[1].trim();
+            if(!confirm(`Do you want to delete bookings for 🎬${movie}?`)) {
+                return;
+            }
+            const req = await fetch('api/rest/updateBooking.php', {
+                body: JSON.stringify(data),
+                method: 'post'
+            });
+            const result = await req.json();
+            if (result.success) {
+                while (parent.nextElementSibling && parent.nextElementSibling.classList.contains('sub')) {
+                    parent.parentElement.removeChild(parent.nextElementSibling);
+                }
+                parent.parentElement.removeChild(parent);
+            }
+            if (document.querySelectorAll('.header:not(.combo)').length < 3) {
+                [...document.querySelectorAll('.header')].forEach(h => h.classList.add('expanded'));
+            }
+        });
+    });
+
+    [...document.querySelectorAll('i[data-combo]')].forEach(el => {
+        el.parentElement.addEventListener('click', e => e.stopPropagation());
+        el.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const type = e.target.dataset.combo;
+            const data = {
+                type: 'UPDATE_COMBO',
+                ['combo_' + type]: 0
+            };
+            if(!confirm(`Do you want to delete ${type == 'a' ? '🍿' : '🌭'}Combo ${type.toUpperCase()}?`)) {
+                return;
+            }
+            const req = await fetch('api/rest/updateBooking.php', {
+                body: JSON.stringify(data),
+                method: 'post'
+            });
+            const result = await req.json();
+            const parent = e.target.parentElement.parentElement;
+            if (result.success) {
+                while (parent.nextElementSibling && parent.nextElementSibling.classList.contains('sub')) {
+                    parent.parentElement.removeChild(parent.nextElementSibling);
+                }
+                parent.parentElement.removeChild(parent);
+            }
+        });
+    });
 
 })();

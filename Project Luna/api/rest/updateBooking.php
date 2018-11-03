@@ -14,8 +14,12 @@ $result = ["success" => true];
 try {
     switch ($data['type']) {
         case 'UPDATE_COMBO':
-            $_SESSION['combo_a'] = $data['combo_a'];
-            $_SESSION['combo_b'] = $data['combo_b'];
+            if(isset($data['combo_a'])) {
+                $_SESSION['combo_a'] = $data['combo_a'];
+            }
+            if (isset($data['combo_b'])) {
+                $_SESSION['combo_b'] = $data['combo_b'];
+            }
             break;
         case 'ADD_SHOWTIME':
             if (!isset($_SESSION['showtimes'])) {

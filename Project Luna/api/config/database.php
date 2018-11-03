@@ -26,14 +26,18 @@ class Database
         if($this->conn->query($query)->num_rows) {
             return;
         }
+        $query = file_get_contents(dirname(__DIR__).'/../libs/sql/init.sql');
+        $query .= file_get_contents(dirname(__DIR__).'/../libs/sql/data.sql');
+        $query = str_replace('DB_NAME', $this->db_name, $query);
+        $this->conn->multi_query($query);
     }
-
+    
     function __destruct() {
         $this->conn->close();
     }
-
+    
     public static function getConnection() {
-        if(self::$db == null) {
+        if(is_null(self::$db)) {
             self::$db = new Database();
         }
         return self::$db->conn;

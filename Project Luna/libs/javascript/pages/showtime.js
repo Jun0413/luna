@@ -41,6 +41,8 @@ async function fetchShowtimes() {
     displayTabs();
 
     displayShowtimes();
+
+    loadMovie();
 }
 
 function getIdFromURL() {
@@ -76,7 +78,9 @@ function getMovies() {
             _movieIds.add(st['mid']);
             movies.push({
                 mid: st['mid'],
-                movie: st['movie']
+                movie: st['movie'],
+                length: st['length'],
+                genre: st['genre']
             });
         }
     }
@@ -169,6 +173,8 @@ function displayTabs() {
 }
 
 function displayShowtimes() {
+    history.pushState(null, document.title, `${location.pathname}?cinema=${cinemaId}&movie=${movieId}`);
+    loadMovie();
     let showTimeTable = '<p>Available showtimes</p>';
 
     let _showtimes = {};
@@ -188,7 +194,7 @@ function displayShowtimes() {
         }
     }
 
-    console.log(_showtimes);
+    // console.log(_showtimes);
 
     let today = new Date();
     let options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -245,6 +251,17 @@ function selectSlot(showtimeId) {
     location.href = `booking.php?showtime=${showtimeId}`;
 }
 
+function loadMovie() {
+    const movie = movies.find(m => m.mid == movieId);
+    const content = `<div class="wrapper" onclick="location.href='movie.php?movie=${movieId}'">
+                    <img src="./images/posters/${movieId}.jpg" alt="${movie.movie}>">
+                    </div>
+                    <h2>${movie.movie}</h2>
+                    <p>${movie.length} min</p>
+                    <p>${movie.genre}</p>`;
+    document.querySelector('.movie').innerHTML = content;
+}
+
 /* main entry */
 fetchShowtimes();
 
@@ -256,7 +273,6 @@ fetchShowtimes();
     <button>Thomas & Friends: Big World! Big Adventures!</button>
     <button>movie 4</button> -->
 </div>
-
 <div class="ver_container">
     <div class="hor_tab">
         <!-- <button>cinema 1</button>
@@ -264,7 +280,6 @@ fetchShowtimes();
         <button>cinema 3</button>
         <button>cinema 4</button> -->
     </div>    
-
     <div id="showtime_table">
         <!-- <p>Available showtimes</p>
         <div class="day_showtime">
@@ -319,5 +334,4 @@ fetchShowtimes();
             </div>
         </div> -->
     </div>
-
 </div>*/

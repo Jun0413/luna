@@ -16,8 +16,10 @@ main {
 
 .hor_container {
     display: flex;
-    min-height: 40rem;
+    min-height: 90vh;
+    height: 100%;
     color: white;
+    float: left;
 }
 
 .ver_container {
@@ -134,4 +136,34 @@ main {
     color: #ccc;
     text-decoration: none;
     opacity: .3;
+}
+
+.movie {
+    width: 20%;
+    color: #FFF;
+    text-align: center;
+    height: 100%;
+    margin-left: 3vw;
+    padding-top: 10vh;
+    transition: transform .3s ease;
+    cursor: pointer;
+}
+
+.movie:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.movie h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.movie p {
+    line-height: 1.5rem;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.movie img {
+    width: 15rem;
 }

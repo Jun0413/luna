@@ -1,4 +1,5 @@
 <?php
+session_start();
 $config = array(
     'navLink' => 'movies',
     'styles' => array('./libs/css/pages/booking.css'),
@@ -6,8 +7,13 @@ $config = array(
 );
 
 if (!isset($_GET['showtime'])) {
-    header('Location: home.php');
+    header('location: home.php');
     die();
+}
+
+if (!isset($_SESSION['combo_a'])) {
+    $_SESSION['combo_a'] = 0;
+    $_SESSION['combo_b'] = 0;
 }
 
 require_once './components/layout_header.php';
@@ -21,7 +27,7 @@ require_once './components/layout_header.php';
             <div class="content">
                 <label for="combo_a">Combo A <br>$9.00</label>
                 <div class="input">
-                    <input type="number" name="combo_a" id="combo_a" value="0" readonly form="details">
+                    <input type="number" name="combo_a" id="combo_a" value="<?php echo $_SESSION['combo_a']?>" readonly form="details">
                     <button class="plus control-button">+</button>
                     <button class="minus control-button">-</button>
                 </div>
@@ -32,13 +38,13 @@ require_once './components/layout_header.php';
             <div class="content">
                 <label for="combo_b">Combo B <br>$8.50</label>
                 <div class="input">
-                    <input type="number" name="combo_b" id="combo_b" value="0" readonly form="details">
+                    <input type="number" name="combo_b" id="combo_b" value="<?php echo $_SESSION['combo_b']?>" readonly form="details">
                     <button class="plus control-button">+</button>
                     <button class="minus control-button">-</button>
                 </div>
             </div>
         </div>
-        <button class="control" data-count="0"></button>
+        <button class="control" data-count="<?php echo $_SESSION['combo_a'] + $_SESSION['combo_b']?>"></button>
     </aside>
 
     <section class="top">

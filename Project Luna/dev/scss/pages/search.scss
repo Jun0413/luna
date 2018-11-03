@@ -1,0 +1,65 @@
+@import '../variable';
+@import '../mixins';
+main {
+    color: #FFF;
+    a {
+        color: #FFF;
+        transition: transform .3s ease;
+        &:hover {
+            transform: scale3d(1.05, 1.05, 1.05);
+        }
+    } 
+    h2 {
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+    h1 {
+        flex: 0 0 100%;
+        font-size: 1.5rem;
+        line-height: 4rem;
+        span {
+            display: inline-block;
+            @include header();
+            text-align: center;
+        }
+        &::after {
+            content: attr(data-count);
+            font-size: 1rem;
+            margin-left: 1rem;
+        }
+    }
+    p {
+        line-height: 1.2rem;
+    }
+    .cinemas {
+        margin: 0 5%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        a {
+            flex: 0 0 45%;
+            margin: 0 2.5% 2rem;
+        }
+        img {
+            max-width: 100%;
+            width: 20vw;
+            height: 13.33vw;
+            float: left;
+            margin-right: 1rem;
+        }
+    }
+    .movies {
+        margin: 0 5%;
+        display: flex;
+        flex-wrap: wrap;
+        a {
+            flex: 0 0 15%;
+            text-align: center;
+            margin: 0 2.5% 1rem;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+}

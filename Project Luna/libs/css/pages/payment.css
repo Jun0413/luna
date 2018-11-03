@@ -103,10 +103,11 @@ main {
     width: 1rem;
     cursor: pointer; }
   .left .sub td {
-    height: 0;
-    transition: height .3s ease-in; }
+    display: none; }
   .left .expanded + .sub td, .left .expanded + .sub + .sub td, .left .expanded + .sub + .sub + .sub td {
-    height: auto; }
+    display: table-cell; }
+  .left .header {
+    cursor: pointer; }
 
 .raised-button {
   padding: .5rem 1rem;

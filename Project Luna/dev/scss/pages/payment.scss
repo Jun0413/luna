@@ -115,12 +115,14 @@ main {
     width: 1rem;
     cursor: pointer;
   }
-  .sub td {
-    height: 0;
-    transition: height .3s ease-in;
+  .sub td{
+    display: none;
   }
   .expanded + .sub td, .expanded + .sub + .sub td, .expanded + .sub + .sub + .sub td{
-    height: auto;
+    display: table-cell;
+  }
+  .header {
+    cursor: pointer;
   }
 }
 
