@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+date_default_timezone_set("Asia/Singapore");
+
 if (!isset($_SESSION['user_email']) || !isset($_SESSION['user_name'])) {
     header('location: home.php');
     die();
@@ -42,10 +44,19 @@ require_once './api/config/database.php';
                 $row = $result->fetch_assoc();
                 $retrieved[] = $row;
             }
-             // compute date, add it to the retrieved array
+            
+            // compute date, add it to the retrieved array
+            function convert_day_to_datetime($day, $timestamp, $start_time) {
+                $_date = new DateTime();
+                $_day = date("N", $_date->getTimestamp());
+                $inv = ($day >= $_day ? $day - $_day : $day - $_day + 7);
+                return date('y-m-d', strtotime(date('y-m-d', $timestamp) . " +".$inv." days"))." ".substr($start_time, 0, 5);
+            }
+
             for ($i = 0; $i < count($retrieved); $i++) {
                 $row = $retrieved[$i];
-                $date_time = date('y-m-d', strtotime(date('y-m-d', $row['timestamp']) . " +".$row['day']." days"))." ".substr($row['start_time'], 0, 5);
+                // $date_time = date('y-m-d', strtotime(date('y-m-d', $row['timestamp']) . " +".$row['day']." days"))." ".substr($row['start_time'], 0, 5);
+                $date_time = convert_day_to_datetime($row['day'], $row['timestamp'], $row['start_time']);
                 $retrieved[$i]['date_time'] = $date_time;
             }
              // combine hall & seats
