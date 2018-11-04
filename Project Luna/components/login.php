@@ -26,7 +26,7 @@
         <input type="password" placeholder="Enter Password" name="password" required>
 
         <div style="text-align:center">
-            <button type="button" onclick="signin_handler()">Login</button>
+            <button type="submit" onclick="signin_handler()">Login</button>
         </div>
     </div>
 
@@ -37,11 +37,11 @@
         <label><b>Email</b></label>
         <input type="email" placeholder="Enter email" name="email" required>
 
-        <label><b>Password</b></label>
+        <labl><b>Password</b></labl>
         <input type="password" placeholder="Enter Password" name="password" required>
 
         <div style="text-align:center">
-            <button type="button" onclick="signup_handler()">Register</button>
+            <button type="submit" onclick="signup_handler()">Register</button>
         </div>
     </div>
 

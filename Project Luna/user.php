@@ -45,7 +45,7 @@ require_once './api/config/database.php';
              // compute date, add it to the retrieved array
             for ($i = 0; $i < count($retrieved); $i++) {
                 $row = $retrieved[$i];
-                $date_time = date('y-m-d', strtotime(date('y-m-d', $row['timestamp'])))." ".substr($row['start_time'], 0, 5);
+                $date_time = date('y-m-d', strtotime(date('y-m-d', $row['timestamp']) . " +".$row['day']." days"))." ".substr($row['start_time'], 0, 5);
                 $retrieved[$i]['date_time'] = $date_time;
             }
              // combine hall & seats
@@ -74,7 +74,7 @@ require_once './api/config/database.php';
             $timestamp_now = $dt_obj->getTimestamp();
             $upcoming_rows = "";
             $past_rows = "";
-            $continue_from = 0;
+            $continue_from = 999;
             $upcoming_count = 0;
             $past_count = 0;
             foreach ($formatted_data as $i => $row) {
