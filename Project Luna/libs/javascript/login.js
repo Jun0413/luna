@@ -1,5 +1,7 @@
 const form = document.getElementsByClassName('login-modal-content')[0];
 
+form.addEventListener('submit', e => e.preventDefault());
+
 function displaySignin() {
     document.getElementsByClassName('login-input')[0].style.opacity = 0;
     setTimeout(_ => {
@@ -27,6 +29,10 @@ function processResult(result) {
 }
 
 async function signin_handler() {
+    if (!form.email.value || !form.password.value) 
+        return alert("Missing input!");
+    if (!/^\S+@\S+\.\S+$/.test(form.email.value))
+        return alert("Invalid email format");
     const fd = new FormData();
     fd.append('email', form.email.value);
     fd.append('password', form.password.value);
@@ -40,6 +46,14 @@ async function signin_handler() {
 }
 
 async function signup_handler() {
+    if (!form.name.value || !form.email.value || !form.password.value)
+        return alert("Missing input!");
+    if (!/^[a-zA-Z0-9]{1,10}$/.test(form.name.value))
+        return alert("Name must be alphanumeric within length 10");
+    if (!/^\S+@\S+\.\S+$/.test(form.email.value))
+        return alert("Invalid email format");
+    if (!/^[a-zA-Z0-9]{6,10}$/.test(form.password.value))
+        return alert("Password must be alphanumeric with length between 6 and 10 characters");
     const fd = new FormData();
     fd.append('name', form.name.value);
     fd.append('email', form.email.value);
