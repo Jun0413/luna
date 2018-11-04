@@ -52,8 +52,8 @@ async function signup_handler() {
         return alert("Name must be alphanumeric within length 10");
     if (!/^\S+@\S+\.\S+$/.test(form.email.value))
         return alert("Invalid email format");
-    if (!/^[a-zA-Z0-9]{6,10}$/.test(form.password.value))
-        return alert("Password must be alphanumeric with length between 6 and 10 characters");
+    if (!/^[a-zA-Z0-9]{3,10}$/.test(form.password.value))
+        return alert("Password must be alphanumeric with length between 3 and 10 characters");
     const fd = new FormData();
     fd.append('name', form.name.value);
     fd.append('email', form.email.value);
