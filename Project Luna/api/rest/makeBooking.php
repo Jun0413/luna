@@ -39,7 +39,8 @@ try {
         }
     }
 
-    $to = 'f37ee@localhost';
+    // $to = 'f37ee@localhost';
+    $to = $_POST['email'];
     $subject = 'Luna Cinema - Booking Confirmation';
     $headers = "From: f37ee@localhost" . "\r\n" . "X-Mailer: PHP/" . phpversion();
 
@@ -62,7 +63,7 @@ try {
         $total += $movie_price;
         $message .= "   Movie - " . $detail['movie'] . " x" . $detail['count'] . "          $" . number_format($movie_price, 2) . 
                 "\r\n   ****    " . $detail['cinema'] . " - " . $detail['hall'] .
-                "\r\n   ****    " . $detail['time'] . "Seats: $seats\r\n" .
+                "\r\n   ****    " . $detail['time'] . " Seats: $seats\r\n" .
                 "   ----------------------------------------------\r\n";
     }
     if ($_SESSION['combo_a']) {
