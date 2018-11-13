@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_email']) || !isset($_SESSION['user_name'])) {
 $config = array(
     'navLink' => 'home',
     'styles' => array('./libs/css/pages/user.css'),
-    'scripts' => array()
+    'scripts' => array('./libs/javascript/pages/user.js')
 );
 
 require_once './components/layout_header.php';
@@ -36,7 +36,12 @@ require_once './api/config/database.php';
          <?php
             $db = Database::getConnection();
             
-            $query = "select movie.name as movie_name, cinema.name as cinema_name, mvbk.day, mvbk.start_time, mvbk.timestamp, hall.name as hall_name, mvbk.seat from (select st.hall_id, st.movie_id, st.day, st.start_time, show_seat.seat, show_seat.timestamp from (select bkn.showtime_id, bkn.seat,txn.timestamp from transaction as txn, booking as bkn where txn.email = '$email' and txn.id = bkn.transaction_id) as show_seat, showtime as st where show_seat.showtime_id = st.id) as mvbk, hall, cinema, movie where mvbk.hall_id = hall.id and mvbk.movie_id = movie.id and hall.cinema_id = cinema.id";
+            $query = "select movie.name as movie_name, cinema.name as cinema_name, mvbk.day, mvbk.start_time, mvbk.timestamp, hall.name as hall_name, mvbk.seat 
+            from (select st.hall_id, st.movie_id, st.day, st.start_time, show_seat.seat, show_seat.timestamp 
+            from (select bkn.showtime_id, bkn.seat,txn.timestamp from transaction as txn, booking as bkn 
+            where txn.email = '$email' and txn.id = bkn.transaction_id) as show_seat, 
+            showtime as st where show_seat.showtime_id = st.id) as mvbk, hall, cinema, movie 
+            where mvbk.hall_id = hall.id and mvbk.movie_id = movie.id and hall.cinema_id = cinema.id";
              $retrieved = array();
              $result = $db->query($query);
             $num_rows = $result->num_rows;
@@ -129,6 +134,66 @@ require_once './api/config/database.php';
             }
             echo "</div>";
         ?>
+    <div class="recomm">
+        <?php 
+            // top 10 movies of similar genres
+            $query = "SELECT m.id, m.name, m.genre, m.length FROM movie m
+            WHERE m.genre IN (
+                SELECT DISTINCT genre FROM booking b
+                LEFT JOIN transaction t ON t.id = b.transaction_id
+                LEFT JOIN showtime s ON s.id = b.showtime_id
+                LEFT JOIN movie m ON m.id = s.movie_id
+                WHERE t.email = '$email'
+            ) AND m.name NOT IN (
+                SELECT DISTINCT m.name FROM booking b
+                LEFT JOIN transaction t ON t.id = b.transaction_id
+                LEFT JOIN showtime s ON s.id = b.showtime_id
+                LEFT JOIN movie m ON m.id = s.movie_id
+                WHERE t.email = '$email'
+            ) LIMIT 10";
+            $result = $db->query($query);
+            $num_rows = $result->num_rows;
+
+            if ($num_rows == 0) {
+                // top 10 most popular movies
+                $query = "SELECT m.id, m.name, m.genre, m.length FROM booking b
+                LEFT JOIN transaction t ON t.id = b.transaction_id
+                LEFT JOIN showtime s ON s.id = b.showtime_id
+                LEFT JOIN movie m ON m.id = s.movie_id
+                GROUP BY m.id
+                ORDER BY count(*) DESC
+                LIMIT 10";
+                $result = $db->query($query);
+                $num_rows = $result->num_rows;
+            }
+
+            if ($num_rows == 0) {
+                // top 10 movies
+                $query = "SELECT m.id, m.name, m.genre, m.length FROM movie m LIMIT 10";
+                $result = $db->query($query);
+                $num_rows = $result->num_rows;
+            }
+        ?>
+        <h1 data-count="<?php echo $num_rows.($num_rows > 1 ? ' movies' : ' movie') ?>"><span>recommend</span></h1>
+        <div class="slider">
+            <div class="container">
+                <?php while($row = $result->fetch_assoc()) { ?>
+                <div class="movie" data-id="<?php echo $row['id'] ?>">
+                    <img src="./images/posters/0.jpg" alt="<?php echo $row['name'] ?>">
+                    <div class="info">
+                        <span><?php echo $row['name'] ?></span>
+                        <span><?php echo $row['genre'] ?></span>
+                        <span><?php echo $row['length'] ?> min</span>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="control_left">&#10094;</button>
+            <button class="control_right">&#10095;</button>
+        </div>
+    </div>
     </section>
 </main>
 

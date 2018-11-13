@@ -59,8 +59,8 @@
         const sorting = {
             'Movie Name': (a, b) => a.name > b.name ? 1 : -1,
             'Movie Length': (a, b) => a.length - b.length,
-            'Release Date': (a, b) => a.id - b.id - (a.is_showing - b.is_showing) * 100,
-            'Popularity': (a, b) => popularities[b.id] - popularities[a.id]
+            'Release Date': (a, b) => a.id - b.id - (a.is_showing - b.is_showing) * 1000,
+            'Popularity': (a, b) => popularities[b.id] - popularities[a.id] - (a.is_showing - b.is_showing) * 1000
         };
 
         const filtered = movies.filter(v => (!genre || genre === 'All Genres' || v.genre === genre) &&

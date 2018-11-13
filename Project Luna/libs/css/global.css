@@ -332,13 +332,17 @@ nav {
   align-items: center;
   height: 100%; }
 
+body {
+  min-width: 576px; }
+
 main {
   min-height: 100vh;
-  width: 100%;
   background-color: #000;
   padding-top: 4rem;
   overflow: visible;
   padding-bottom: 1rem; }
+  main section {
+    width: 100%; }
 
 footer {
   bottom: 0;
@@ -362,7 +366,8 @@ footer {
     padding: .5rem 1rem;
     border-bottom: 1px solid #666;
     outline: none;
-    width: 18rem;
+    width: 25vw;
+    max-width: 18rem;
     transition: border-color .3s ease;
     letter-spacing: 1px; }
     .search-bar #search::-webkit-input-placeholder {
@@ -428,3 +433,26 @@ footer {
     .right-nav .profile .user-pic:hover {
       background-color: #555;
       transform: scale3d(1.05, 1.05, 1.05); }
+
+@media screen and (max-width: 960px) {
+  nav {
+    flex-wrap: wrap;
+    height: 8rem; }
+  .left-nav, .right-nav {
+    height: 50%;
+    width: 100%; }
+  .left-nav ul {
+    width: calc(100% - 64px);
+    display: flex;
+    justify-content: space-around; }
+  .right-nav {
+    width: 100%;
+    display: flex; }
+    .right-nav .search-bar {
+      flex: 1; }
+      .right-nav .search-bar #search {
+        max-width: none;
+        width: 80%;
+        margin: 10%; }
+  main {
+    padding-top: 8rem; } }

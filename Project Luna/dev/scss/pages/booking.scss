@@ -208,6 +208,21 @@
       transition: all .2s ease;
     }
   }
+  @media screen and (max-width: 860px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .select {
+      flex: 0 0 40%;
+      margin-bottom: 1rem;
+    }
+    form {
+      width: 40%;
+      .raised-button {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
 }
 
 .bottom {
@@ -254,24 +269,42 @@
         }
       }
     }
+    @media screen and (max-width: 860px ) {
+      .row span {
+        $shift: .2rem;
+        $total: 4;
+        @for $i from 1 through $total {
+          &:nth-of-type(#{$i}), &:nth-last-of-type(#{$i}) {
+            margin-top: -$shift * ($total + 1) + $i*$shift;
+          }
+        }
+      }
+    }
   }
 }
 
 .row {
   $margin: .3rem;
+  $margin2: .2rem;
+  $size: 1.2rem;
+  $size2: 0.9rem;
   width: 100%;
   display: flex;
   justify-content: center;
   margin: $margin 0;
+  @media screen and (max-width: 860px) {
+    margin: $margin2 0;
+  }
   b {
     width: 2rem;
-    height: 1.5rem;
+    // height: 1.5rem;
   }
   span {
     $color: #D5DCE3;
-    $size: 1.2rem;
     $height: 1.2rem;
+    $height2: 0.9rem;
     $width: 1.6rem;
+    $width2: 1.2rem;
     cursor: pointer;
     border-radius: 3px;
     display: inline-block;
@@ -308,6 +341,24 @@
       top: 0;
       left: $size/2 - $border;
     }
+    @media screen and (max-width: 860px) {
+      $border: .3rem;
+      width: $size2;
+      height: $size2;
+      margin: 0 $margin2;
+      &::before {
+        content: attr(data-seat);
+        width: $width2;
+        height: $height2;
+        line-height: $height2;
+        text-align: center;
+        top: - $height2;
+        left: ($size2 - $width2)/2;
+      }
+      &::after {
+        left: $size2/2 - $border;
+      }
+    }
     &:hover {
       &::before, &::after {
         display: block;
@@ -340,12 +391,8 @@
         left: -20%;
       }
       &:hover {
-        &::before {
-          //background: #F8E473;
-        }
         &::after {
           display: none;
-          //border-top-color: #F8E473;
         }
       }
     }

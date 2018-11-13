@@ -190,6 +190,11 @@
     width: 60vw;
     min-height: 33.6rem;
     height: 33.6vw; }
+    @media screen and (max-width: 960px) {
+      .top .slideshow {
+        margin-right: 0;
+        width: 100%;
+        min-width: auto; } }
     .top .slideshow::before, .top .slideshow::after {
       content: '';
       display: block;
@@ -212,6 +217,11 @@
     left: 10%;
     top: calc(50% - 10rem);
     z-index: 10; }
+    @media screen and (max-width: 960px) {
+      .top #quickBuy {
+        margin: auto;
+        left: 0;
+        right: 0; } }
 
 .bottom {
   width: 80%;
@@ -251,6 +261,10 @@
     margin: 0 2.5%;
     position: relative;
     cursor: pointer; }
+    @media screen and (max-width: 960px) {
+      .slider .movie {
+        flex: 0 0 23.3%;
+        margin: 0 5%; } }
     .slider .movie img {
       max-width: 100%;
       transition: all .3s ease; }

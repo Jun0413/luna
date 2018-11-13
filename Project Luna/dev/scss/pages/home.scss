@@ -18,6 +18,11 @@
     width: $width;
     min-height: $min * 0.56;
     height: $width * 0.56;
+    @media screen and (max-width: 960px) {
+      margin-right: 0;
+      width: 100%;
+      min-width: auto;
+    }
     &::before, &::after {
       content: '';
       display: block;
@@ -46,6 +51,11 @@
     left: 10%;
     top: calc(50% - #{$height/2});
     z-index: 10;
+    @media screen and (max-width: 960px) {
+      margin: auto;
+      left: 0;
+      right: 0;
+    }
   }
 }
 
@@ -72,6 +82,10 @@
     flex: 0 0 15%;
     margin: 0 2.5%;
     position: relative;
+    @media screen and (max-width: 960px) {
+      flex: 0 0 23.3%;
+      margin: 0 5%; 
+    }
     cursor: pointer;
     img {
       max-width: 100%;

@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
     const right_control = document.querySelector('.control_right');
     const speed = 300;
     let current = 0;
+    let step = 100 / (window.innerWidth > 960 ? 5 : 3);
 
     // clone nodes
     for(let i = 0; i < total - 1; i++) {
@@ -38,7 +39,7 @@ window.addEventListener('load', () => {
         current %= total;
         e.target.disabled = true;
         setTimeout(() => e.target.disabled = false, speed);
-        keyframe(current * 20, ++current * 20);
+        keyframe(current * step, ++current * step);
     }
 
     function goBack(e) {
@@ -46,11 +47,16 @@ window.addEventListener('load', () => {
         current = current % total || total;
         e.target.disabled = true;
         setTimeout(() => e.target.disabled = false, speed);
-        keyframe(current * 20, --current * 20);
+        keyframe(current * step, --current * step);
     }
 
     left_control.addEventListener('click', goBack);
     right_control.addEventListener('click', goNext);
 
+    window.addEventListener('resize', () => {
+        const oldStep = step;
+        step = 100 / (window.innerWidth > 960 ? 5 : 3);
+        keyframe(current * oldStep, current * step);
+    });
 
 });
