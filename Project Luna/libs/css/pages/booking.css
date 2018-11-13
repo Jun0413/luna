@@ -288,6 +288,18 @@
       height: 1.3rem;
       pointer-events: none;
       transition: all .2s ease; }
+  @media screen and (max-width: 860px) {
+    .top {
+      flex-wrap: wrap;
+      justify-content: space-around; }
+      .top .select {
+        flex: 0 0 40%;
+        margin-bottom: 1rem; }
+      .top form {
+        width: 40%; }
+        .top form .raised-button {
+          width: 100%;
+          margin-bottom: 1rem; } }
 
 .bottom {
   width: 80%;
@@ -327,15 +339,26 @@
     margin-top: -0.8rem; }
   .layout.type_a .row span:nth-of-type(4), .layout.type_a .row span:nth-last-of-type(4) {
     margin-top: -0.4rem; }
+  @media screen and (max-width: 860px) {
+    .layout.type_a .row span:nth-of-type(1), .layout.type_a .row span:nth-last-of-type(1) {
+      margin-top: -0.8rem; }
+    .layout.type_a .row span:nth-of-type(2), .layout.type_a .row span:nth-last-of-type(2) {
+      margin-top: -0.6rem; }
+    .layout.type_a .row span:nth-of-type(3), .layout.type_a .row span:nth-last-of-type(3) {
+      margin-top: -0.4rem; }
+    .layout.type_a .row span:nth-of-type(4), .layout.type_a .row span:nth-last-of-type(4) {
+      margin-top: -0.2rem; } }
 
 .row {
   width: 100%;
   display: flex;
   justify-content: center;
   margin: 0.3rem 0; }
+  @media screen and (max-width: 860px) {
+    .row {
+      margin: 0.2rem 0; } }
   .row b {
-    width: 2rem;
-    height: 1.5rem; }
+    width: 2rem; }
   .row span {
     cursor: pointer;
     border-radius: 3px;
@@ -370,6 +393,21 @@
       border-top-color: #364350;
       top: 0;
       left: 0.3rem; }
+    @media screen and (max-width: 860px) {
+      .row span {
+        width: 0.9rem;
+        height: 0.9rem;
+        margin: 0 0.2rem; }
+        .row span::before {
+          content: attr(data-seat);
+          width: 1.2rem;
+          height: 0.9rem;
+          line-height: 0.9rem;
+          text-align: center;
+          top: -0.9rem;
+          left: -0.15rem; }
+        .row span::after {
+          left: 0.15rem; } }
     .row span:hover::before, .row span:hover::after {
       display: block; }
     .row span.active {

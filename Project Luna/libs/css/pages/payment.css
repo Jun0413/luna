@@ -208,6 +208,25 @@ main {
       width: 40%;
       height: 4rem; }
 
+@media screen and (max-width: 960px) {
+  main {
+    flex-wrap: wrap; }
+  .left, .right {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column; }
+  .right {
+    padding-top: 3rem;
+    margin-top: 2rem; }
+    .right::before {
+      width: 80%;
+      left: 10%;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(to right, #333 0%, #CCC 50%, #333 100%); } }
+
 .modal {
   position: fixed;
   top: 0;

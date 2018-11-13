@@ -42,6 +42,15 @@
       transition: all .2s ease;
     }
   }
+    @media screen and (max-width: 960px) {
+      form {
+        flex-wrap: wrap;
+        .select {
+          flex: 0 0 40%;
+          margin-bottom: 1rem;
+        }
+      }
+    }
 }
 
 .bottom {
@@ -55,9 +64,21 @@
   .movie {
     flex: 0 0 15%;
     margin: 0 2.5%;
+    @media screen and (max-width: 1200px) {
+      flex: 0 0 20%;
+      margin: 0 2.5%;
+    }
+    @media screen and (max-width: 960px) {
+      flex: 0 0 23%;
+      margin: 0 5%;
+    }
+    @media screen and (max-width: 560px) {
+      flex: 0 0 40%;
+      margin: 0 5%;
+    }
     position: relative;
     cursor: pointer;
-    transition: all .3s ease;
+    transition: all .3s ese;
     &:hover {
       transform: scale3d(1.05, 1.05, 1.05) translateY(-1%);
       .wrapper {

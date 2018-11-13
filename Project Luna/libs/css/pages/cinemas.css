@@ -9,15 +9,18 @@
 
 .cinemas a {
     flex: 0 0 50%;
-    padding: 1rem;
+    position: relative;
+    margin-bottom: 2rem;
+    display: flex;
 }
 
 a img {
     max-width: 100%;
     width: 20vw;
     height: 13.33vw;
-    float: left;
     margin-right: 1rem;
+    min-width: 8rem;
+    min-height: 5.337rem;
 }
 
 a div {
@@ -60,4 +63,10 @@ a {
 i {
     width: 2.5rem;
     margin-left: .5rem;
+}
+
+@media screen and (max-width: 960px) {
+    .cinemas a {
+        flex: 1 1 100%;
+    }
 }
