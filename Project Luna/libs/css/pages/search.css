@@ -1,5 +1,7 @@
 main {
   color: #FFF; }
+  main section {
+    width: auto; }
   main a {
     color: #FFF;
     transition: transform .3s ease; }

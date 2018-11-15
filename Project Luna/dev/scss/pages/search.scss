@@ -2,6 +2,9 @@
 @import '../mixins';
 main {
     color: #FFF;
+    section {
+        width: auto;
+    }
     a {
         color: #FFF;
         transition: transform .3s ease;
