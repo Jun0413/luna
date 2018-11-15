@@ -18,6 +18,18 @@
     };
 
     const form = document.forms['filters'];
+    const search_el = document.getElementById('search');
+    search_el.addEventListener('keyup', () => {
+        let timeout = null;
+        const later = () => {
+            timeout = null;
+            filter_movies();
+        }
+        timeout = setTimeout(later, 300);
+        if (!timeout) {
+            filter_movies();
+        }
+    });
 
     // create select menu
     ['genre', 'region', 'rating', 'sort'].forEach(attr => {
@@ -63,7 +75,8 @@
             'Popularity': (a, b) => popularities[b.id] - popularities[a.id] - (a.is_showing - b.is_showing) * 1000
         };
 
-        const filtered = movies.filter(v => (!genre || genre === 'All Genres' || v.genre === genre) &&
+        const filtered = movies.filter(v => (!search_el.value || v.name.toLowerCase().indexOf(search.value.toLowerCase())!=-1) && 
+            (!genre || genre === 'All Genres' || v.genre === genre) &&
             (!region || region === 'All Regions' || v.region === region) &&
             (!rating || rating === 'All Ratings' || v.rating === rating))
             .sort(sorting[sort]);
