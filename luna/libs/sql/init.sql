@@ -34,16 +34,6 @@ CREATE TABLE `movie` (
   PRIMARY KEY (`id`)
 );
 
-
-
-
-
-
-
-
-
-
-
 CREATE TABLE `showtime` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hall_id` int(11) unsigned NOT NULL,
@@ -75,7 +65,7 @@ CREATE TABLE `user` (
   `password` varchar(256) CHARACTER SET utf8 NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-);
+) ROW_FORMAT=DYNAMIC;
 
 CREATE TABLE `booking` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -87,4 +77,4 @@ CREATE TABLE `booking` (
   KEY `transaction_id` (`transaction_id`),
   CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`showtime_id`) REFERENCES `showtime` (`id`),
   CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`id`)
-);
+) ROW_FORMAT=DYNAMIC;
